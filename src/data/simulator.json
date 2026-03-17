@@ -1,0 +1,252 @@
+{
+  "scenario": "First Day at French University",
+  "description": "It's your first day as an exchange student at a French university. Navigate through the day by choosing the right responses!",
+  "steps": [
+    {
+      "id": 1,
+      "time": "8:00 AM",
+      "location": "Your apartment hallway",
+      "situation": "You step out of your apartment and see your neighbor in the hallway.",
+      "choices": [
+        {
+          "text": "Walk past quickly without making eye contact",
+          "isCorrect": false,
+          "feedback": "Ignoring neighbors is considered rude in France. Even a simple greeting makes a big difference!",
+          "points": 0
+        },
+        {
+          "text": "Say 'Bonjour!' with a smile and nod",
+          "isCorrect": true,
+          "feedback": "Parfait! A friendly 'Bonjour' is essential. Your neighbor will appreciate the politeness. This small gesture builds good relationships.",
+          "points": 10
+        },
+        {
+          "text": "Give them a big hug",
+          "isCorrect": false,
+          "feedback": "Hugging strangers or neighbors you just met is too familiar in French culture. A simple 'Bonjour' and smile is much more appropriate.",
+          "points": 2
+        }
+      ],
+      "bestPhrase": {
+        "french": "Bonjour! Bonne journée!",
+        "english": "Hello! Have a good day!"
+      }
+    },
+    {
+      "id": 2,
+      "time": "8:15 AM",
+      "location": "The bakery (boulangerie)",
+      "situation": "You stop at the boulangerie for breakfast. There's a queue of 3 people ahead of you.",
+      "choices": [
+        {
+          "text": "Walk up to the counter and quickly order",
+          "isCorrect": false,
+          "feedback": "Cutting in line is extremely rude in France! Always wait your turn in the queue.",
+          "points": 0
+        },
+        {
+          "text": "Wait in line, then say 'Bonjour! Un pain au chocolat, s'il vous plaît'",
+          "isCorrect": true,
+          "feedback": "Très bien! You greeted the shopkeeper, waited your turn, and ordered politely. You're fitting in perfectly!",
+          "points": 10
+        },
+        {
+          "text": "Wait in line, then point at what you want without speaking",
+          "isCorrect": false,
+          "feedback": "While waiting in line is correct, you should always greet with 'Bonjour' first and use words to order. Pointing without speaking is considered impolite.",
+          "points": 4
+        }
+      ],
+      "bestPhrase": {
+        "french": "Bonjour! Un pain au chocolat et un café, s'il vous plaît.",
+        "english": "Hello! A chocolate croissant and a coffee, please."
+      }
+    },
+    {
+      "id": 3,
+      "time": "9:00 AM",
+      "location": "University campus - Lecture hall",
+      "situation": "You arrive at your first class. The professor is already at the front. You're 2 minutes late.",
+      "choices": [
+        {
+          "text": "Walk in loudly, find a seat, and sit down without acknowledging the professor",
+          "isCorrect": false,
+          "feedback": "Entering loudly without acknowledgment disrupts the class and is disrespectful to the professor.",
+          "points": 0
+        },
+        {
+          "text": "Enter quietly, nod to the professor, and take the nearest seat",
+          "isCorrect": true,
+          "feedback": "Bien fait! Entering discreetly and acknowledging the professor shows respect. Being a few minutes late is generally acceptable, but try to be on time.",
+          "points": 10
+        },
+        {
+          "text": "Wait outside until there's a break to enter",
+          "isCorrect": false,
+          "feedback": "While thoughtful, waiting too long means you miss content. It's better to enter quietly and sit down discreetly. A small nod to the professor is sufficient.",
+          "points": 5
+        }
+      ],
+      "bestPhrase": {
+        "french": "Excusez-moi pour le retard.",
+        "english": "Sorry for being late."
+      }
+    },
+    {
+      "id": 4,
+      "time": "10:30 AM",
+      "location": "University campus - After class",
+      "situation": "A French student sitting next to you turns and introduces themselves: 'Salut, moi c'est Marie!'",
+      "choices": [
+        {
+          "text": "Reply in English: 'Hi, I'm [name], nice to meet you!'",
+          "isCorrect": false,
+          "feedback": "While not terrible, switching to English immediately might create distance. Try French first - it shows effort and respect!",
+          "points": 4
+        },
+        {
+          "text": "Reply: 'Salut Marie! Moi c'est [name]. Je suis étudiant(e) en échange. Tu es en quelle filière?'",
+          "isCorrect": true,
+          "feedback": "Excellent! You replied in French, introduced yourself, and asked about their program. This opens the door to a great friendship!",
+          "points": 10
+        },
+        {
+          "text": "Just smile and nod nervously",
+          "isCorrect": false,
+          "feedback": "It's normal to be nervous, but try to respond! Even a simple 'Salut! Moi c'est [name]' is enough. French students appreciate any effort.",
+          "points": 2
+        }
+      ],
+      "bestPhrase": {
+        "french": "Salut! Moi c'est [nom]. Enchant\u00e9(e)! Tu es en quelle filière?",
+        "english": "Hi! I'm [name]. Nice to meet you! What program are you in?"
+      }
+    },
+    {
+      "id": 5,
+      "time": "12:30 PM",
+      "location": "University cafeteria (RU - Restaurant Universitaire)",
+      "situation": "You're at the university cafeteria. A group of French students invites you to sit with them for lunch.",
+      "choices": [
+        {
+          "text": "Say 'No thanks' and eat alone looking at your phone",
+          "isCorrect": false,
+          "feedback": "Declining a lunch invitation can seem distant. French meals are deeply social - it's a great chance to make friends and practice French!",
+          "points": 0
+        },
+        {
+          "text": "Say 'Oui, avec plaisir! Merci!' and join them",
+          "isCorrect": true,
+          "feedback": "Parfait! French meals are social events. By joining, you'll make friends, practice French, and understand student culture. Enjoy the conversation!",
+          "points": 10
+        },
+        {
+          "text": "Join but keep your earphones in and eat quickly",
+          "isCorrect": false,
+          "feedback": "Eating with earphones in and rushing through the meal goes against French dining culture. Meals are for conversation and socializing.",
+          "points": 2
+        }
+      ],
+      "bestPhrase": {
+        "french": "Oui, avec plaisir! Merci de m'inviter. Bon appétit!",
+        "english": "Yes, with pleasure! Thanks for inviting me. Enjoy your meal!"
+      }
+    },
+    {
+      "id": 6,
+      "time": "2:00 PM",
+      "location": "University administration office",
+      "situation": "You need to submit enrollment documents. The administrative assistant looks busy.",
+      "choices": [
+        {
+          "text": "Walk up and immediately explain what you need in English",
+          "isCorrect": false,
+          "feedback": "Starting in English without a greeting can seem demanding. Always begin with 'Bonjour' and try French first.",
+          "points": 2
+        },
+        {
+          "text": "Say 'Bonjour Madame, excusez-moi de vous déranger. Je voudrais déposer mes documents d'inscription.'",
+          "isCorrect": true,
+          "feedback": "Excellent! You greeted politely, apologized for the interruption, and stated your need clearly. This is perfect French etiquette in administrative settings.",
+          "points": 10
+        },
+        {
+          "text": "Wait silently until they notice you",
+          "isCorrect": false,
+          "feedback": "While patient, you might wait forever! It's perfectly fine to politely get their attention with 'Bonjour' and 'Excusez-moi.'",
+          "points": 3
+        }
+      ],
+      "bestPhrase": {
+        "french": "Bonjour Madame, excusez-moi de vous déranger. Je voudrais déposer mes documents d'inscription, s'il vous plaît.",
+        "english": "Hello Madam, sorry to bother you. I'd like to submit my enrollment documents, please."
+      }
+    },
+    {
+      "id": 7,
+      "time": "5:00 PM",
+      "location": "Supermarket (Carrefour / Monoprix)",
+      "situation": "You're buying groceries. At checkout, the cashier greets you with 'Bonjour!'",
+      "choices": [
+        {
+          "text": "Stay silent and put your items on the belt",
+          "isCorrect": false,
+          "feedback": "Not responding to 'Bonjour' is considered one of the rudest things you can do in France. Always return the greeting!",
+          "points": 0
+        },
+        {
+          "text": "Reply 'Bonjour!' and put your items on the belt. After paying, say 'Merci, bonne soirée!'",
+          "isCorrect": true,
+          "feedback": "Parfait! Greeting back and saying goodbye with 'bonne soirée' (good evening) shows perfect French manners. Small interactions like these matter!",
+          "points": 10
+        },
+        {
+          "text": "Nod and smile but don't say anything",
+          "isCorrect": false,
+          "feedback": "A nod is better than nothing, but verbal greetings are expected in France. A simple 'Bonjour' takes one second and makes a huge difference.",
+          "points": 3
+        }
+      ],
+      "bestPhrase": {
+        "french": "Bonjour! ... Merci beaucoup, bonne soirée!",
+        "english": "Hello! ... Thank you very much, have a good evening!"
+      }
+    },
+    {
+      "id": 8,
+      "time": "7:00 PM",
+      "location": "Your apartment",
+      "situation": "Your new French friend Marie texts you: 'Salut! On fait une soirée chez Thomas ce soir à 20h. Tu viens?' (Hey! We're having a party at Thomas's tonight at 8 PM. Coming?)",
+      "choices": [
+        {
+          "text": "Reply: 'Oui, je viens! J'apporte quelque chose?' and arrive at exactly 8:00 PM",
+          "isCorrect": false,
+          "feedback": "Good that you offered to bring something! But arriving exactly at 8:00 might be too early. For French social gatherings, 10-15 minutes late is the norm.",
+          "points": 6
+        },
+        {
+          "text": "Reply: 'Oui, avec plaisir! Je peux apporter du vin?' and arrive around 8:15 PM",
+          "isCorrect": true,
+          "feedback": "Parfait! You accepted enthusiastically, offered to bring wine (always appreciated!), and arrived at the socially appropriate 'quart d'heure de politesse.' You're becoming truly French!",
+          "points": 10
+        },
+        {
+          "text": "Don't reply and just show up whenever",
+          "isCorrect": false,
+          "feedback": "Not confirming and showing up randomly is inconsiderate. Always respond to invitations, even if just to say you'll try to come.",
+          "points": 0
+        }
+      ],
+      "bestPhrase": {
+        "french": "Oui, avec plaisir! Je peux apporter une bouteille de vin. À ce soir!",
+        "english": "Yes, with pleasure! I can bring a bottle of wine. See you tonight!"
+      }
+    }
+  ],
+  "scoring": {
+    "excellent": {"min": 70, "title": "True Parisien(ne)!", "message": "You navigated your first day like a local! Your French manners are impeccable. You'll fit right in."},
+    "good": {"min": 50, "title": "Bon Début!", "message": "Good start! You made some great choices but there's room to improve. Focus on always greeting people and trying French first."},
+    "needsWork": {"min": 25, "title": "Keep Practicing!", "message": "You have some French culture basics but need more practice. Review the Culture Guide section to learn about French etiquette."},
+    "beginner": {"min": 0, "title": "Bienvenue en France!", "message": "Looks like French culture is still new to you — that's totally okay! Start with our Culture Guide and French Phrases sections to get prepared."}
+  }
+}

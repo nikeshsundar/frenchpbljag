@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "category": "Admissions",
+    "title": "How important is DELF/DALF for admission?",
+    "author": "Rahul M.",
+    "date": "2026-03-10",
+    "replies": 12,
+    "upvotes": 24,
+    "excerpt": "I'm applying to Sorbonne for CS. My program is in English but they're asking for French proficiency. Is B1 enough or should I aim for B2?",
+    "tags": ["Language", "Requirements"]
+  },
+  {
+    "id": 2,
+    "category": "Visa",
+    "title": "Campus France interview tips?",
+    "author": "Sneha K.",
+    "date": "2026-03-12",
+    "replies": 18,
+    "upvotes": 45,
+    "excerpt": "My Campus France interview is next week. What questions should I prepare for? Any specific documents they focus on?",
+    "tags": ["Campus France", "Interview"]
+  },
+  {
+    "id": 3,
+    "category": "Housing",
+    "title": "CROUS vs Private accommodation - which is better?",
+    "author": "Amit S.",
+    "date": "2026-03-08",
+    "replies": 23,
+    "upvotes": 38,
+    "excerpt": "Got CROUS housing in Paris for €400/month but also found a private studio for €650. Is CROUS worth the shared facilities?",
+    "tags": ["CROUS", "Paris", "Budget"]
+  },
+  {
+    "id": 4,
+    "category": "Student Life",
+    "title": "Indian grocery stores in Lyon?",
+    "author": "Priya R.",
+    "date": "2026-03-14",
+    "replies": 8,
+    "upvotes": 15,
+    "excerpt": "Missing home food already! Any recommendations for Indian grocery stores in Lyon? Looking for spices and dal especially.",
+    "tags": ["Lyon", "Food", "Culture"]
+  },
+  {
+    "id": 5,
+    "category": "Jobs",
+    "title": "Can we work during the first year?",
+    "author": "Karthik V.",
+    "date": "2026-03-11",
+    "replies": 15,
+    "upvotes": 32,
+    "excerpt": "I heard there's a rule about not working in the first 3 months. Is this true? When can I start looking for part-time jobs?",
+    "tags": ["Part-time", "Legal", "Work Permit"]
+  },
+  {
+    "id": 6,
+    "category": "Admissions",
+    "title": "Success story: Got into HEC with 7.8 CGPA!",
+    "author": "Rohan P.",
+    "date": "2026-03-15",
+    "replies": 34,
+    "upvotes": 89,
+    "excerpt": "Never thought I'd make it with my CGPA but strong essays and work experience helped! Happy to answer questions.",
+    "tags": ["Success Story", "HEC", "Motivation"]
+  },
+  {
+    "id": 7,
+    "category": "Visa",
+    "title": "Long-stay visa processing time?",
+    "author": "Divya L.",
+    "date": "2026-03-09",
+    "replies": 11,
+    "upvotes": 28,
+    "excerpt": "Applied for my visa 3 weeks ago. Still waiting. What's the average processing time in Delhi VFS?",
+    "tags": ["Visa Timeline", "VFS", "Delhi"]
+  },
+  {
+    "id": 8,
+    "category": "Student Life",
+    "title": "Best student restaurants/RUs in Paris?",
+    "author": "Aditya M.",
+    "date": "2026-03-13",
+    "replies": 19,
+    "upvotes": 41,
+    "excerpt": "Just discovered Restaurant Universitaire - €3.30 meals are amazing! Which RUs have the best food in Paris?",
+    "tags": ["Paris", "Food", "Budget"]
+  },
+  {
+    "id": 9,
+    "category": "Housing",
+    "title": "Beware of housing scams!",
+    "author": "Neha G.",
+    "date": "2026-03-07",
+    "replies": 27,
+    "upvotes": 67,
+    "excerpt": "Almost got scammed on LeBonCoin. Never pay deposit before seeing apartment in person! Here's what to watch out for...",
+    "tags": ["Warning", "Scam Alert", "Safety"]
+  },
+  {
+    "id": 10,
+    "category": "Admissions",
+    "title": "Which universities have rolling admissions?",
+    "author": "Sanjay K.",
+    "date": "2026-03-16",
+    "replies": 9,
+    "upvotes": 22,
+    "excerpt": "Missed some deadlines. Are there French universities that accept applications year-round or have later deadlines?",
+    "tags": ["Deadlines", "Rolling Admission"]
+  },
+  {
+    "id": 11,
+    "category": "Jobs",
+    "title": "Uber Eats vs Deliveroo - which pays better?",
+    "author": "Manish T.",
+    "date": "2026-03-12",
+    "replies": 14,
+    "upvotes": 31,
+    "excerpt": "Thinking of doing food delivery part-time. Anyone with experience comparing these platforms in Toulouse?",
+    "tags": ["Delivery", "Part-time", "Toulouse"]
+  },
+  {
+    "id": 12,
+    "category": "Student Life",
+    "title": "Making French friends - tips?",
+    "author": "Ishita B.",
+    "date": "2026-03-10",
+    "replies": 22,
+    "upvotes": 53,
+    "excerpt": "Been here 2 months but still mostly hanging with international students. How do I break into French friend groups?",
+    "tags": ["Social Life", "Integration", "Culture"]
+  },
+  {
+    "id": 13,
+    "category": "Visa",
+    "title": "Renewing titre de séjour - when to start?",
+    "author": "Varun S.",
+    "date": "2026-03-14",
+    "replies": 16,
+    "upvotes": 29,
+    "excerpt": "My residence permit expires in 4 months. When should I start the renewal process? Prefecture appointments are hard to get!",
+    "tags": ["Residence Permit", "Renewal", "Prefecture"]
+  },
+  {
+    "id": 14,
+    "category": "Admissions",
+    "title": "Interview at École Polytechnique - what to expect?",
+    "author": "Harish N.",
+    "date": "2026-03-11",
+    "replies": 7,
+    "upvotes": 19,
+    "excerpt": "Got selected for interview round! Super nervous. Anyone who's been through this, what kind of questions do they ask?",
+    "tags": ["Interview", "École Polytechnique", "Preparation"]
+  },
+  {
+    "id": 15,
+    "category": "Student Life",
+    "title": "Best cities for international students?",
+    "author": "Lakshmi P.",
+    "date": "2026-03-09",
+    "replies": 31,
+    "upvotes": 72,
+    "excerpt": "Choosing between Paris, Lyon, and Toulouse. Which city is most welcoming to international students? Cost vs opportunities?",
+    "tags": ["City Comparison", "Student Life", "Advice Needed"]
+  }
+]

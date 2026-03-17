@@ -1,0 +1,429 @@
+[
+  {
+    "id": 1,
+    "category": "Academic",
+    "situation": "Speaking to a Professor",
+    "phrases": [
+      {
+        "french": "Bonjour Professeur, je suis étudiant(e) en échange.",
+        "english": "Hello Professor, I am an exchange student.",
+        "pronunciation": "bon-ZHOOR pro-feh-SUHR, zhuh swee ay-too-dee-AHN(t) ahn ay-SHAHNZH",
+        "tone": "formal",
+        "context": "First time meeting your professor"
+      },
+      {
+        "french": "Excusez-moi, je n'ai pas compris. Pourriez-vous répéter, s'il vous plaît?",
+        "english": "Excuse me, I didn't understand. Could you repeat, please?",
+        "pronunciation": "ex-koo-ZAY mwah, zhuh nay pah kohm-PREE. poor-ee-AY voo ray-pay-TAY seel voo PLAY",
+        "tone": "formal",
+        "context": "When you don't understand in class"
+      },
+      {
+        "french": "Est-ce que je pourrais prendre un rendez-vous pour discuter de mon projet?",
+        "english": "Could I make an appointment to discuss my project?",
+        "pronunciation": "es-kuh zhuh poor-AY prahndr uhn rahn-day-VOO poor dee-skoo-TAY duh mohn pro-ZHAY",
+        "tone": "formal",
+        "context": "Requesting office hours"
+      },
+      {
+        "french": "Je vous remercie pour votre aide, Professeur.",
+        "english": "Thank you for your help, Professor.",
+        "pronunciation": "zhuh voo reh-MAIR-see poor votr ED, pro-feh-SUHR",
+        "tone": "formal",
+        "context": "After receiving help"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "Academic",
+    "situation": "Asking a Question in Class",
+    "phrases": [
+      {
+        "french": "Excusez-moi, j'ai une question à propos de...",
+        "english": "Excuse me, I have a question about...",
+        "pronunciation": "ex-koo-ZAY mwah, zhay oon kes-tee-OHN ah pro-POH duh",
+        "tone": "formal",
+        "context": "During a lecture"
+      },
+      {
+        "french": "Pourriez-vous expliquer ce concept plus en détail?",
+        "english": "Could you explain this concept in more detail?",
+        "pronunciation": "poor-ee-AY voo ex-plee-KAY suh kohn-SEPT ploos ahn day-TIE",
+        "tone": "formal",
+        "context": "When needing clarification"
+      },
+      {
+        "french": "Est-ce que c'est noté? / Est-ce que ça compte pour la note finale?",
+        "english": "Is this graded? / Does this count toward the final grade?",
+        "pronunciation": "es-kuh say no-TAY / es-kuh sah kohnt poor lah noht fee-NAL",
+        "tone": "formal",
+        "context": "About assignments and exams"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "Professional",
+    "situation": "Requesting an Internship",
+    "phrases": [
+      {
+        "french": "Bonjour, je suis actuellement étudiant(e) à [université] et je recherche un stage en [domaine].",
+        "english": "Hello, I am currently a student at [university] and I'm looking for an internship in [field].",
+        "pronunciation": "bon-ZHOOR, zhuh swee ak-too-EL-mahn ay-too-dee-AHN(t) ah [university] ay zhuh ruh-SHAIRSH uhn stahzh ahn [domain]",
+        "tone": "formal",
+        "context": "Opening line for internship inquiry email"
+      },
+      {
+        "french": "Votre entreprise m'intéresse particulièrement en raison de [raison].",
+        "english": "Your company particularly interests me because of [reason].",
+        "pronunciation": "votr ahn-truh-PREEZ mahn-tay-RESS par-tee-koo-lee-AIR-mahn ahn ray-ZOHN duh",
+        "tone": "formal",
+        "context": "Showing motivation in your application"
+      },
+      {
+        "french": "Je suis disponible à partir du [date] pour une durée de [durée].",
+        "english": "I am available from [date] for a duration of [duration].",
+        "pronunciation": "zhuh swee dees-po-NEEBL ah par-TEER doo [date] poor oon doo-RAY duh",
+        "tone": "formal",
+        "context": "Specifying availability"
+      },
+      {
+        "french": "Veuillez trouver ci-joint mon CV et ma lettre de motivation.",
+        "english": "Please find attached my CV and cover letter.",
+        "pronunciation": "vuh-YAY troo-VAY see-ZHWAN mohn say-VAY ay mah letr duh moh-tee-vah-see-OHN",
+        "tone": "formal",
+        "context": "Email closing with attachments"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "category": "Professional",
+    "situation": "Job Interview Preparation",
+    "phrases": [
+      {
+        "french": "Bonjour, je suis [nom]. Merci de me recevoir aujourd'hui.",
+        "english": "Hello, I am [name]. Thank you for seeing me today.",
+        "pronunciation": "bon-ZHOOR, zhuh swee [name]. mair-SEE duh muh ruh-suh-VWAHR oh-zhoor-DWEE",
+        "tone": "formal",
+        "context": "Greeting the interviewer"
+      },
+      {
+        "french": "J'ai de l'expérience en [domaine] et je suis motivé(e) pour ce poste.",
+        "english": "I have experience in [field] and I'm motivated for this position.",
+        "pronunciation": "zhay duh lex-pay-ree-AHNSS ahn [domain] ay zhuh swee moh-tee-VAY poor suh post",
+        "tone": "formal",
+        "context": "Describing your experience"
+      },
+      {
+        "french": "Quelles sont les prochaines étapes du processus de recrutement?",
+        "english": "What are the next steps in the recruitment process?",
+        "pronunciation": "kel sohn lay pro-SHEN ay-TAP doo pro-say-SOOS duh ruh-kroot-MAHN",
+        "tone": "formal",
+        "context": "Asking about next steps"
+      },
+      {
+        "french": "Je vous remercie pour cette opportunité. Au revoir et bonne journée.",
+        "english": "Thank you for this opportunity. Goodbye and have a good day.",
+        "pronunciation": "zhuh voo reh-MAIR-see poor set oh-por-too-nee-TAY. oh ruh-VWAHR ay bun zhoor-NAY",
+        "tone": "formal",
+        "context": "Ending the interview politely"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "category": "Professional",
+    "situation": "Writing Professional Emails",
+    "phrases": [
+      {
+        "french": "Madame, Monsieur, / Cher Monsieur, / Chère Madame,",
+        "english": "Dear Sir/Madam, / Dear Mr., / Dear Mrs.,",
+        "pronunciation": "ma-DAM, muh-SYUH / shair muh-SYUH / shair ma-DAM",
+        "tone": "formal",
+        "context": "Email greetings (formal)"
+      },
+      {
+        "french": "Je me permets de vous contacter au sujet de...",
+        "english": "I am writing to you regarding...",
+        "pronunciation": "zhuh muh pair-MAY duh voo kohn-tak-TAY oh soo-ZHAY duh",
+        "tone": "formal",
+        "context": "Opening a formal email"
+      },
+      {
+        "french": "Pourriez-vous me confirmer la date / les informations suivantes?",
+        "english": "Could you confirm the date / the following information?",
+        "pronunciation": "poor-ee-AY voo muh kohn-feer-MAY lah daht / lay zan-for-mah-see-OHN swee-VAHNT",
+        "tone": "formal",
+        "context": "Requesting confirmation"
+      },
+      {
+        "french": "Cordialement, / Bien cordialement, / Veuillez agréer mes salutations distinguées.",
+        "english": "Kind regards, / Best regards, / Please accept my distinguished greetings.",
+        "pronunciation": "kor-dee-al-MAHN / byan kor-dee-al-MAHN / vuh-YAY ag-ray-AY may sa-loo-tah-see-OHN dees-tan-GAY",
+        "tone": "formal",
+        "context": "Email sign-offs (from casual-formal to very formal)"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "category": "Daily Life",
+    "situation": "At the Bakery / Café",
+    "phrases": [
+      {
+        "french": "Bonjour! Je voudrais un croissant et un café, s'il vous plaît.",
+        "english": "Hello! I'd like a croissant and a coffee, please.",
+        "pronunciation": "bon-ZHOOR! zhuh voo-DRAY uhn kwah-SAHN ay uhn ka-FAY, seel voo PLAY",
+        "tone": "polite",
+        "context": "Ordering at a bakery"
+      },
+      {
+        "french": "C'est combien? / Ça fait combien?",
+        "english": "How much is it? / How much does that come to?",
+        "pronunciation": "say kohm-BYAN / sah fay kohm-BYAN",
+        "tone": "polite",
+        "context": "Asking the price"
+      },
+      {
+        "french": "Je peux payer par carte?",
+        "english": "Can I pay by card?",
+        "pronunciation": "zhuh puh pay-YAY par kart",
+        "tone": "polite",
+        "context": "Asking about payment methods"
+      },
+      {
+        "french": "Merci beaucoup! Bonne journée!",
+        "english": "Thank you very much! Have a good day!",
+        "pronunciation": "mair-SEE bo-KOO! bun zhoor-NAY!",
+        "tone": "friendly",
+        "context": "Leaving the shop"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "category": "Daily Life",
+    "situation": "Taking Public Transport",
+    "phrases": [
+      {
+        "french": "Excusez-moi, où est l'arrêt de bus / la station de métro?",
+        "english": "Excuse me, where is the bus stop / metro station?",
+        "pronunciation": "ex-koo-ZAY mwah, oo ay la-RAY duh boos / lah stah-see-OHN duh may-TRO",
+        "tone": "polite",
+        "context": "Finding public transport"
+      },
+      {
+        "french": "Je voudrais un ticket / un abonnement Navigo, s'il vous plaît.",
+        "english": "I'd like a ticket / a Navigo pass, please.",
+        "pronunciation": "zhuh voo-DRAY uhn tee-KAY / uhn ah-bun-MAHN na-vee-GO, seel voo PLAY",
+        "tone": "polite",
+        "context": "Buying transport tickets"
+      },
+      {
+        "french": "Ce train va bien à [destination]?",
+        "english": "Does this train go to [destination]?",
+        "pronunciation": "suh traN vah byan ah [destination]?",
+        "tone": "polite",
+        "context": "Confirming your route"
+      },
+      {
+        "french": "Pardon, je descends au prochain arrêt.",
+        "english": "Excuse me, I'm getting off at the next stop.",
+        "pronunciation": "par-DOHN, zhuh day-SAHN oh pro-SHAN ah-RAY",
+        "tone": "polite",
+        "context": "When the bus/tram is crowded"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "category": "Daily Life",
+    "situation": "At the Doctor / Pharmacy",
+    "phrases": [
+      {
+        "french": "Bonjour, je voudrais prendre rendez-vous avec un médecin.",
+        "english": "Hello, I'd like to make an appointment with a doctor.",
+        "pronunciation": "bon-ZHOOR, zhuh voo-DRAY prahndr rahn-day-VOO ah-VEK uhn mayd-SAN",
+        "tone": "polite",
+        "context": "Booking a doctor's appointment"
+      },
+      {
+        "french": "J'ai mal à la tête / au ventre / à la gorge.",
+        "english": "I have a headache / stomachache / sore throat.",
+        "pronunciation": "zhay mal ah lah TET / oh VAHNTR / ah lah GORZH",
+        "tone": "neutral",
+        "context": "Describing symptoms"
+      },
+      {
+        "french": "Je suis allergique à [substance].",
+        "english": "I'm allergic to [substance].",
+        "pronunciation": "zhuh swee al-air-ZHEEK ah [substance]",
+        "tone": "important",
+        "context": "Medical information"
+      },
+      {
+        "french": "Avez-vous quelque chose pour le rhume / la fièvre?",
+        "english": "Do you have something for a cold / fever?",
+        "pronunciation": "ah-VAY voo kel-kuh shoze poor luh ROOM / lah fee-EVRE",
+        "tone": "polite",
+        "context": "At the pharmacy"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "category": "Social",
+    "situation": "Meeting Classmates for the First Time",
+    "phrases": [
+      {
+        "french": "Salut! Moi c'est [nom]. Tu es en quelle filière?",
+        "english": "Hi! I'm [name]. What program are you in?",
+        "pronunciation": "sa-LOO! mwah say [name]. too ay ahn kel feel-ee-AIR",
+        "tone": "informal",
+        "context": "First day of class introduction"
+      },
+      {
+        "french": "Tu viens d'où? Moi je viens de l'Inde.",
+        "english": "Where are you from? I'm from India.",
+        "pronunciation": "too vyan DOO? mwah zhuh vyan duh LAHND",
+        "tone": "informal",
+        "context": "Getting to know someone"
+      },
+      {
+        "french": "Tu veux qu'on prenne un café après le cours?",
+        "english": "Do you want to grab a coffee after class?",
+        "pronunciation": "too vuh kohn pren uhn ka-FAY ah-PRAY luh koor",
+        "tone": "friendly",
+        "context": "Inviting someone for coffee"
+      },
+      {
+        "french": "Tu as WhatsApp? On peut rester en contact!",
+        "english": "Do you have WhatsApp? We can stay in touch!",
+        "pronunciation": "too ah WhatsApp? ohn puh res-TAY ahn kohn-TAKT",
+        "tone": "friendly",
+        "context": "Exchanging contact information"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "category": "Social",
+    "situation": "Meeting a Neighbor",
+    "phrases": [
+      {
+        "french": "Bonjour! Je suis votre nouveau voisin / nouvelle voisine. Je viens d'emménager.",
+        "english": "Hello! I'm your new neighbor. I just moved in.",
+        "pronunciation": "bon-ZHOOR! zhuh swee votr noo-VO vwah-ZAN / noo-VEL vwah-ZEEN. zhuh vyan dahm-ay-nah-ZHAY",
+        "tone": "polite",
+        "context": "Introducing yourself to neighbors"
+      },
+      {
+        "french": "Est-ce que je pourrais vous demander un petit service?",
+        "english": "Could I ask you for a small favor?",
+        "pronunciation": "es-kuh zhuh poor-AY voo deh-mahn-DAY uhn puh-TEE sair-VEESS",
+        "tone": "polite",
+        "context": "Asking neighbor for help"
+      },
+      {
+        "french": "Désolé(e) pour le bruit hier soir.",
+        "english": "Sorry about the noise last night.",
+        "pronunciation": "day-zo-LAY poor luh brwee ee-AIR swahr",
+        "tone": "apologetic",
+        "context": "Apologizing for disturbance"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "category": "Administrative",
+    "situation": "At the Bank",
+    "phrases": [
+      {
+        "french": "Bonjour, je voudrais ouvrir un compte bancaire étudiant.",
+        "english": "Hello, I'd like to open a student bank account.",
+        "pronunciation": "bon-ZHOOR, zhuh voo-DRAY oo-VREER uhn kohnt bahn-KAIR ay-too-dee-AHN",
+        "tone": "formal",
+        "context": "Opening a bank account"
+      },
+      {
+        "french": "Quels documents sont nécessaires?",
+        "english": "What documents are needed?",
+        "pronunciation": "kel do-koo-MAHN sohn nay-say-SAIR",
+        "tone": "formal",
+        "context": "Asking about requirements"
+      },
+      {
+        "french": "Je voudrais faire un virement / retirer de l'argent.",
+        "english": "I'd like to make a transfer / withdraw money.",
+        "pronunciation": "zhuh voo-DRAY fair uhn veer-MAHN / ruh-tee-RAY duh lar-ZHAHN",
+        "tone": "polite",
+        "context": "Banking transactions"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "category": "Administrative",
+    "situation": "At the Prefecture / OFII",
+    "phrases": [
+      {
+        "french": "Bonjour, j'ai rendez-vous pour la validation de mon visa.",
+        "english": "Hello, I have an appointment for my visa validation.",
+        "pronunciation": "bon-ZHOOR, zhay rahn-day-VOO poor lah val-ee-dah-see-OHN duh mohn vee-ZA",
+        "tone": "formal",
+        "context": "OFII appointment"
+      },
+      {
+        "french": "Voici mon passeport et ma convocation.",
+        "english": "Here is my passport and my appointment letter.",
+        "pronunciation": "vwah-SEE mohn pass-POR ay mah kohn-vo-kah-see-OHN",
+        "tone": "formal",
+        "context": "Presenting documents"
+      },
+      {
+        "french": "Quand est-ce que je recevrai mon titre de séjour?",
+        "english": "When will I receive my residence permit?",
+        "pronunciation": "kahn es-kuh zhuh ruh-suh-VRAY mohn teetr duh say-ZHOOR",
+        "tone": "formal",
+        "context": "Asking about residence permit timeline"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "category": "Emergency",
+    "situation": "Emergency Situations",
+    "phrases": [
+      {
+        "french": "Aidez-moi, s'il vous plaît! C'est une urgence!",
+        "english": "Help me, please! It's an emergency!",
+        "pronunciation": "ay-DAY mwah, seel voo PLAY! say oon oor-ZHAHNSS!",
+        "tone": "urgent",
+        "context": "General emergency"
+      },
+      {
+        "french": "Appelez le SAMU (15) / la police (17) / les pompiers (18)!",
+        "english": "Call SAMU (ambulance - 15) / police (17) / fire department (18)!",
+        "pronunciation": "ah-PLAY luh sa-MOO / lah po-LEESS / lay pohm-pee-AY",
+        "tone": "urgent",
+        "context": "French emergency numbers"
+      },
+      {
+        "french": "J'ai perdu mon passeport / mon portefeuille.",
+        "english": "I've lost my passport / my wallet.",
+        "pronunciation": "zhay pair-DOO mohn pass-POR / mohn port-FUH-ee",
+        "tone": "urgent",
+        "context": "Reporting a loss"
+      },
+      {
+        "french": "Où est l'ambassade de l'Inde?",
+        "english": "Where is the Indian embassy?",
+        "pronunciation": "oo ay lahm-ba-SAD duh LAHND",
+        "tone": "formal",
+        "context": "Finding consular help"
+      }
+    ]
+  }
+]

@@ -1,0 +1,308 @@
+{
+  "dosAndDonts": [
+    {
+      "id": 1,
+      "type": "do",
+      "title": "Always say 'Bonjour' when entering a shop",
+      "explanation": "In France, greeting the shopkeeper is expected. Not saying 'Bonjour' is considered very rude. Even in supermarkets, greet the cashier.",
+      "category": "Greetings"
+    },
+    {
+      "id": 2,
+      "type": "dont",
+      "title": "Don't skip the 'Bonjour' before asking a question",
+      "explanation": "Never start a conversation with a stranger without first saying 'Bonjour.' Even asking for directions requires a greeting first. Jumping straight to your question is considered impolite.",
+      "category": "Greetings"
+    },
+    {
+      "id": 3,
+      "type": "do",
+      "title": "Use 'vous' with strangers and older people",
+      "explanation": "French has formal (vous) and informal (tu) forms of 'you.' Always use 'vous' with professors, shopkeepers, strangers, and anyone older than you. Wait for them to invite you to use 'tu.'",
+      "category": "Language"
+    },
+    {
+      "id": 4,
+      "type": "dont",
+      "title": "Don't use 'tu' with your professor",
+      "explanation": "Using 'tu' (informal you) with a professor is a serious social mistake. Always address professors with 'vous' and their title (Professeur/Madame/Monsieur).",
+      "category": "Language"
+    },
+    {
+      "id": 5,
+      "type": "do",
+      "title": "La bise (cheek kisses) with friends",
+      "explanation": "Close friends greet each other with cheek kisses (la bise). The number varies by region: 2 in Paris, 3 in Provence, sometimes 4! Watch what locals do. Don't initiate with strangers.",
+      "category": "Greetings"
+    },
+    {
+      "id": 6,
+      "type": "dont",
+      "title": "Don't eat on public transport",
+      "explanation": "Eating on the metro, bus, or tram is frowned upon in France. It's considered messy and inconsiderate. Wait until you're at your destination or find a bench.",
+      "category": "Public Behavior"
+    },
+    {
+      "id": 7,
+      "type": "do",
+      "title": "Keep your voice down in public places",
+      "explanation": "French people tend to speak more softly in public. Speaking loudly on the phone or in the metro is considered rude. Be mindful of your volume, especially on trains.",
+      "category": "Public Behavior"
+    },
+    {
+      "id": 8,
+      "type": "dont",
+      "title": "Don't rush through meals",
+      "explanation": "Meals are a social ritual in France. Lunch can last 1-2 hours. Don't eat too quickly or leave immediately after finishing. Enjoy the conversation and take your time.",
+      "category": "Dining"
+    },
+    {
+      "id": 9,
+      "type": "do",
+      "title": "Say 'Au revoir' when leaving a shop",
+      "explanation": "Just as you greet when entering, always say goodbye when leaving. 'Au revoir' or 'Bonne journée' (have a good day) shows respect.",
+      "category": "Greetings"
+    },
+    {
+      "id": 10,
+      "type": "do",
+      "title": "Bring a small gift when invited to someone's home",
+      "explanation": "When invited for dinner, bring wine, chocolates, or flowers. Never bring chrysanthemums (funeral flowers) or an even number of flowers. A bottle of wine is always appreciated.",
+      "category": "Social"
+    },
+    {
+      "id": 11,
+      "type": "dont",
+      "title": "Don't arrive exactly on time for dinner parties",
+      "explanation": "For social gatherings (not business), arriving 10-15 minutes late is perfectly acceptable and even expected. Arriving exactly on time might catch your host unprepared.",
+      "category": "Social"
+    },
+    {
+      "id": 12,
+      "type": "do",
+      "title": "Try to speak French, even if imperfect",
+      "explanation": "French people greatly appreciate when foreigners make an effort to speak French. Even starting with 'Bonjour, je ne parle pas très bien français' (I don't speak French very well) goes a long way.",
+      "category": "Language"
+    },
+    {
+      "id": 13,
+      "type": "dont",
+      "title": "Don't discuss money or salaries openly",
+      "explanation": "Asking someone how much they earn is very personal in France. Avoid questions about income, rent, or the cost of someone's belongings. It's considered tactless.",
+      "category": "Social"
+    },
+    {
+      "id": 14,
+      "type": "do",
+      "title": "Respect the lunch break",
+      "explanation": "Many shops and offices close between 12:00-14:00 for lunch. Don't expect everything to be open during this time. Plan your errands outside lunch hours.",
+      "category": "Public Behavior"
+    },
+    {
+      "id": 15,
+      "type": "dont",
+      "title": "Don't expect shops to be open on Sundays",
+      "explanation": "Most shops are closed on Sundays, and many are closed on Mondays too. Supermarkets may have limited Sunday morning hours. Plan your shopping accordingly.",
+      "category": "Public Behavior"
+    },
+    {
+      "id": 16,
+      "type": "do",
+      "title": "Keep bread on the table, not on your plate",
+      "explanation": "In French dining, bread goes directly on the tablecloth/table, not on your side plate. Tear bread with your hands rather than cutting it with a knife.",
+      "category": "Dining"
+    },
+    {
+      "id": 17,
+      "type": "dont",
+      "title": "Don't ask for ketchup in restaurants",
+      "explanation": "Asking for ketchup, especially with a well-prepared dish, can be seen as insulting the chef. French cuisine values the original flavors. The exception is with fries (frites).",
+      "category": "Dining"
+    },
+    {
+      "id": 18,
+      "type": "do",
+      "title": "Always queue in an orderly line",
+      "explanation": "The French respect queues. Cutting in line is extremely rude. If you're unsure who's last, ask 'C'est vous le dernier?' (Are you the last one?).",
+      "category": "Public Behavior"
+    }
+  ],
+  "greetingStyles": [
+    {
+      "situation": "Meeting a professor",
+      "greeting": "Bonjour Professeur / Bonjour Madame / Bonjour Monsieur",
+      "gesture": "Handshake",
+      "notes": "Always use formal address. Wait for them to extend their hand first."
+    },
+    {
+      "situation": "Meeting a classmate for the first time",
+      "greeting": "Salut! / Bonjour!",
+      "gesture": "Handshake or small wave",
+      "notes": "Casual but polite. Once you become friends, you may switch to la bise."
+    },
+    {
+      "situation": "Close friends",
+      "greeting": "Salut! / Coucou!",
+      "gesture": "La bise (cheek kisses)",
+      "notes": "Number of kisses varies by region (2 in Paris, 3 in south). Start from the right cheek."
+    },
+    {
+      "situation": "At a shop or restaurant",
+      "greeting": "Bonjour!",
+      "gesture": "Eye contact and smile",
+      "notes": "Always greet when entering and say 'Au revoir' when leaving."
+    },
+    {
+      "situation": "Business meeting",
+      "greeting": "Bonjour Madame/Monsieur [last name]",
+      "gesture": "Firm handshake",
+      "notes": "Professional and formal. Use last names until invited otherwise."
+    },
+    {
+      "situation": "Phone call (formal)",
+      "greeting": "Allô? Bonjour, c'est [your name] à l'appareil.",
+      "gesture": "N/A",
+      "notes": "Always identify yourself. 'Allô' is only used on the phone, never in person."
+    }
+  ],
+  "cultureQuiz": [
+    {
+      "id": 1,
+      "scenario": "You enter a small bakery in Paris. What do you do first?",
+      "options": [
+        "Walk straight to the counter and point at what you want",
+        "Say 'Bonjour!' to the shopkeeper before ordering",
+        "Start browsing silently without making eye contact",
+        "Pull out your phone to check prices online"
+      ],
+      "correctIndex": 1,
+      "explanation": "Always greet with 'Bonjour!' when entering any shop in France. This is one of the most important social rules. Not greeting is considered very rude."
+    },
+    {
+      "id": 2,
+      "scenario": "Your professor asks you to email them about your assignment. How do you begin the email?",
+      "options": [
+        "Hey Professor!",
+        "Hi, I need help with...",
+        "Bonjour Professeur, je me permets de vous contacter au sujet de...",
+        "Dear Sir"
+      ],
+      "correctIndex": 2,
+      "explanation": "French academic emails require formal language. Start with a proper greeting and the phrase 'je me permets de vous contacter' (I am writing to you). English-style casual greetings are inappropriate."
+    },
+    {
+      "id": 3,
+      "scenario": "You're invited to a French friend's home for dinner at 8 PM. What time do you arrive?",
+      "options": [
+        "7:45 PM to help set up",
+        "Exactly at 8:00 PM",
+        "Around 8:10-8:15 PM",
+        "9:00 PM"
+      ],
+      "correctIndex": 2,
+      "explanation": "For social dinners, arriving 10-15 minutes late is perfectly acceptable and even expected ('le quart d'heure de politesse'). Arriving early might catch your host unprepared."
+    },
+    {
+      "id": 4,
+      "scenario": "A French classmate greets you with cheek kisses (la bise). What's the proper response?",
+      "options": [
+        "Step back and offer a handshake instead",
+        "Hug them tightly",
+        "Lean in and gently touch cheeks, making a kissing sound",
+        "Kiss their hand"
+      ],
+      "correctIndex": 2,
+      "explanation": "La bise involves gently touching cheeks (not actually kissing) and making a light kissing sound. It's a normal greeting among friends. Don't pull away or try to hug instead."
+    },
+    {
+      "id": 5,
+      "scenario": "You're eating lunch at the university cafeteria and want to leave. What do you say?",
+      "options": [
+        "Nothing, just leave",
+        "Bye everyone!",
+        "Bon appétit! Au revoir!",
+        "Thanks for the food"
+      ],
+      "correctIndex": 2,
+      "explanation": "Wishing others 'Bon appétit' when they're still eating and saying 'Au revoir' is polite. Simply leaving without a word is considered rude in French culture."
+    },
+    {
+      "id": 6,
+      "scenario": "You just got great service at a restaurant. How much tip should you leave?",
+      "options": [
+        "20% like in America",
+        "15% is standard",
+        "Service is included, but rounding up or leaving 1-2€ is a nice gesture",
+        "You must tip at least 10% or it's rude"
+      ],
+      "correctIndex": 2,
+      "explanation": "In France, service charge (service compris) is included in the bill by law. Tipping is not required but leaving a few euros for excellent service is appreciated."
+    },
+    {
+      "id": 7,
+      "scenario": "You want to buy groceries on Sunday afternoon. Where do you go?",
+      "options": [
+        "Any supermarket, they're all open",
+        "A small épicerie (corner shop) or a supermarket open on Sunday mornings",
+        "The shopping mall, everything is open on Sundays",
+        "Order delivery since nothing is open"
+      ],
+      "correctIndex": 1,
+      "explanation": "Most shops close on Sundays. Some supermarkets open Sunday mornings until 12-1 PM. Small épiceries (corner shops) in neighborhoods often stay open later. Plan your shopping accordingly!"
+    },
+    {
+      "id": 8,
+      "scenario": "A French person asks 'Ça va?' (How are you?). What's the expected response?",
+      "options": [
+        "Give a detailed honest answer about your day",
+        "Ça va, merci! Et vous? (Fine, thanks! And you?)",
+        "I'm doing fantastic, let me tell you about my week!",
+        "Ignore and move on"
+      ],
+      "correctIndex": 1,
+      "explanation": "'Ça va?' is usually a polite formality, not an invitation for a long response. A quick 'Ça va, merci!' and returning the question is the standard polite exchange."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Using 'tu' with everyone",
+      "correction": "Use 'vous' with strangers, professors, and elders. 'Tu' is only for friends, family, and peers who invite you to use it.",
+      "severity": "high"
+    },
+    {
+      "mistake": "Skipping greetings",
+      "correction": "Always say 'Bonjour' when meeting someone, entering a shop, or starting any interaction. It's the #1 rule of French politeness.",
+      "severity": "high"
+    },
+    {
+      "mistake": "Speaking English immediately",
+      "correction": "Always try French first, even if just 'Bonjour, parlez-vous anglais?' Many French people appreciate the effort and will switch to English if needed.",
+      "severity": "medium"
+    },
+    {
+      "mistake": "Being too loud in public",
+      "correction": "Keep your voice down on public transport, in restaurants, and on the street. The French tend to speak more quietly in public spaces.",
+      "severity": "medium"
+    },
+    {
+      "mistake": "Tipping 20% at restaurants",
+      "correction": "Service is included in French restaurant bills. A small tip (1-2€) is appreciated but not expected. 20% would be excessive.",
+      "severity": "low"
+    },
+    {
+      "mistake": "Expecting everything to be open on Sundays",
+      "correction": "Most shops are closed on Sundays. Some supermarkets open Sunday mornings. Plan your shopping for weekdays or Saturday.",
+      "severity": "medium"
+    },
+    {
+      "mistake": "Not saying 'Au revoir' when leaving",
+      "correction": "Always say goodbye when leaving a shop, office, or any interaction. 'Au revoir' or 'Bonne journée' is expected.",
+      "severity": "medium"
+    },
+    {
+      "mistake": "Arriving on time for a dinner party",
+      "correction": "For social dinners, arriving 10-15 minutes late is the norm. Being exactly on time or early might inconvenience your host.",
+      "severity": "low"
+    }
+  ]
+}
