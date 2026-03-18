@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Loader2, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Sparkles, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { chatWithAI } from '../utils/openai';
 
 const AIChat = () => {
@@ -8,7 +9,7 @@ const AIChat = () => {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: 'Hello! I\'m your AI guide for studying in France. Ask me anything about admissions, visas, student life, or universities!'
+      content: 'Hello! I\'m your AI guide for studying in France. Ask me a quick question, or open the full chat for a detailed conversation!'
     }
   ]);
   const [input, setInput] = useState('');
@@ -18,8 +19,6 @@ const AIChat = () => {
     'What documents do I need for a student visa?',
     'How much does it cost to live in Paris?',
     'Can I work part-time as a student?',
-    'What is Campus France?',
-    'Best cities for Computer Science students?'
   ];
 
   const handleSend = async (question = input) => {
@@ -36,7 +35,7 @@ const AIChat = () => {
     } catch (error) {
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'Sorry, I encountered an error. Please make sure you have set up your OpenAI API key in the .env file.'
+        content: 'Sorry, I encountered an error. Please try the full chat page or check the API configuration.'
       }]);
     }
 
@@ -63,17 +62,27 @@ const AIChat = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 w-96 h-[600px] bg-dark-card rounded-2xl shadow-2xl shadow-purple-500/10 flex flex-col overflow-hidden border border-white/10"
+            className="fixed bottom-24 right-6 w-96 h-[500px] bg-dark-card rounded-2xl shadow-2xl shadow-purple-500/10 flex flex-col overflow-hidden border border-white/10"
             style={{ zIndex: 9999 }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-4 flex items-center justify-between">
-              <div className="flex items-center">
-                <Sparkles className="w-5 h-5 mr-2" />
-                <div>
-                  <h3 className="font-semibold">AI Admission Guide</h3>
-                  <p className="text-xs text-purple-100">Powered by GPT-4o</p>
+            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  <div>
+                    <h3 className="font-semibold">AI Quick Chat</h3>
+                    <p className="text-xs text-purple-100">Ask a quick question</p>
+                  </div>
                 </div>
+                <Link
+                  to="/ai-advisor"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-1 text-xs bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-full transition-all"
+                >
+                  Full Chat
+                  <ExternalLink className="w-3 h-3" />
+                </Link>
               </div>
             </div>
 
@@ -87,7 +96,7 @@ const AIChat = () => {
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-[80%] p-3 rounded-lg ${
+                    className={`max-w-[85%] p-3 rounded-lg text-sm ${
                       msg.role === 'user'
                         ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-none'
                         : 'bg-white/10 text-gray-200 rounded-bl-none border border-white/10'
@@ -112,7 +121,7 @@ const AIChat = () => {
               <div className="px-4 pb-2 bg-dark border-t border-white/10">
                 <p className="text-xs text-gray-500 mb-2 mt-2">Quick questions:</p>
                 <div className="flex flex-wrap gap-2">
-                  {suggestedQuestions.slice(0, 3).map((q, idx) => (
+                  {suggestedQuestions.map((q, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleSend(q)}
@@ -125,23 +134,38 @@ const AIChat = () => {
               </div>
             )}
 
+            {/* Open Full Chat CTA */}
+            {messages.length > 2 && (
+              <div className="px-4 py-2 bg-purple-500/10 border-t border-purple-500/20">
+                <Link
+                  to="/ai-advisor"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 text-sm text-purple-300 hover:text-purple-200 transition-colors"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Want a detailed conversation? Open full chat
+                  <ExternalLink className="w-4 h-4" />
+                </Link>
+              </div>
+            )}
+
             {/* Input */}
-            <div className="p-4 border-t border-white/10 bg-dark-card">
+            <div className="p-3 border-t border-white/10 bg-dark-card">
               <div className="flex items-center space-x-2">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                  placeholder="Ask me anything..."
-                  className="flex-1 p-2 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="Ask a quick question..."
+                  className="flex-1 p-2 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm"
                 />
                 <button
                   onClick={() => handleSend()}
                   disabled={loading || !input.trim()}
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-5 h-5" />
+                  <Send className="w-4 h-4" />
                 </button>
               </div>
             </div>

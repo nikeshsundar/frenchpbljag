@@ -9,6 +9,7 @@ import CareerHelp from './pages/CareerHelp';
 import FindFriends from './pages/FindFriends';
 import CultureGuide from './pages/CultureGuide';
 import DaySimulator from './pages/DaySimulator';
+import AIAdvisor from './pages/AIAdvisor';
 import AIChat from './components/AIChat';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/find-friends" element={<FindFriends />} />
           <Route path="/culture-guide" element={<CultureGuide />} />
           <Route path="/day-simulator" element={<DaySimulator />} />
+          <Route path="/ai-advisor" element={<AIAdvisor />} />
         </Routes>
         <AIChat />
       </div>
