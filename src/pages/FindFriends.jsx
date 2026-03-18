@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { MapPin, Heart, Globe2, MessageCircle, Copy, Check, RefreshCw, Users, Coffee, Music, BookOpen, Dumbbell, Camera, Utensils, Volume2 } from 'lucide-react';
+import { MapPin, Heart, Globe2, MessageCircle, Copy, Check, RefreshCw, Users, Coffee, Music, BookOpen, Dumbbell, Camera, Utensils, Volume2, ArrowRight } from 'lucide-react';
 
 const cities = [
   { name: 'Paris', emoji: '🗼', students: '300,000+' },
@@ -63,21 +63,21 @@ const messageTemplates = [
     pronunciation: 'bon-ZHOOR! zhuh swee votr noo-VO vwah-ZAN. zhuh vyan dahm-ay-nah-ZHAY. ahn-shahn-TAY!',
   },
   {
-    situation: 'At a student party',
+    situation: 'At a party',
     emoji: '🎉',
     french: 'Salut! Tu connais qui ici? Moi je suis nouveau / nouvelle, je viens de l\'Inde!',
     english: 'Hi! Who do you know here? I\'m new, I\'m from India!',
     pronunciation: 'sa-LOO! too koh-NAY kee ee-SEE? mwah zhuh swee noo-VO, zhuh vyan duh LAHND!',
   },
   {
-    situation: 'Language exchange partner',
+    situation: 'Language partner',
     emoji: '🗣️',
     french: 'Salut! Je cherche quelqu\'un pour pratiquer le français. Je peux t\'aider avec l\'anglais en échange!',
     english: 'Hi! I\'m looking for someone to practice French with. I can help you with English in exchange!',
     pronunciation: 'sa-LOO! zhuh shairsh kel-KUHN poor prah-tee-KAY luh frahn-SAY. zhuh puh teh-DAY ah-VEK lahn-GLAY ahn ay-SHAHNZH!',
   },
   {
-    situation: 'Sports club / gym',
+    situation: 'Sports club',
     emoji: '⚽',
     french: 'Salut! Tu fais partie du club? Je voudrais m\'inscrire. Comment ça marche?',
     english: 'Hi! Are you part of the club? I\'d like to sign up. How does it work?',
@@ -129,292 +129,314 @@ const FindFriends = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-5xl font-display font-bold mb-4 gradient-text"
-        >
-          Find Friends in France
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-xl text-gray-600 max-w-2xl mx-auto"
-        >
-          Discover where to meet people, join communities, and get ready-made French messages to break the ice
-        </motion.p>
-      </div>
-
-      <div className="grid lg:grid-cols-2 gap-12">
-        {/* Left: Friend Finder Form */}
-        <div>
+    <div className="bg-[#0a0a0a] min-h-screen pt-24">
+      {/* Hero Section */}
+      <section className="py-20 relative">
+        <div 
+          className="absolute top-0 right-0 w-1/2 h-full"
+          style={{
+            background: 'radial-gradient(ellipse 60% 60% at 70% 20%, rgba(236, 72, 153, 0.1), transparent)',
+          }}
+        />
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
           >
-            <h2 className="text-2xl font-display font-bold text-gray-800 mb-6 flex items-center gap-2">
-              <Users className="w-6 h-6 text-pink-500" />
-              Friend Finder
-            </h2>
-
-            {/* Step 1: City */}
-            <div className="mb-6">
-              <h3 className="font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-pink-500" />
-                Where are you studying?
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                {cities.map((city) => (
-                  <button
-                    key={city.name}
-                    onClick={() => { setSelectedCity(city.name); setShowSuggestions(false); }}
-                    className={`p-3 rounded-lg text-left transition-all border ${
-                      selectedCity === city.name
-                        ? 'border-pink-400 bg-pink-50 text-pink-700'
-                        : 'border-gray-200 bg-white text-gray-600 hover:border-pink-200 hover:bg-pink-50/50'
-                    }`}
-                  >
-                    <span className="text-lg mr-1">{city.emoji}</span>
-                    <span className="font-semibold text-sm">{city.name}</span>
-                    <span className="block text-xs text-gray-400 ml-7">{city.students} students</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Step 2: Interests */}
-            <div className="mb-6">
-              <h3 className="font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                <Heart className="w-4 h-4 text-pink-500" />
-                What are your interests?
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                {interests.map((item) => {
-                  const Icon = item.icon;
-                  const isSelected = selectedInterests.includes(item.id);
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => toggleInterest(item.id)}
-                      className={`p-3 rounded-lg flex items-center gap-2 transition-all border text-sm ${
-                        isSelected
-                          ? 'border-pink-400 bg-pink-50 text-pink-700'
-                          : 'border-gray-200 bg-white text-gray-600 hover:border-pink-200'
-                      }`}
-                    >
-                      <Icon className={`w-4 h-4 ${isSelected ? 'text-pink-500' : 'text-gray-400'}`} />
-                      <span className="font-semibold">{item.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Step 3: Language Level */}
-            <div className="mb-6">
-              <h3 className="font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                <Globe2 className="w-4 h-4 text-pink-500" />
-                Your French level?
-              </h3>
-              <div className="space-y-2">
-                {languageLevels.map((level) => (
-                  <button
-                    key={level.id}
-                    onClick={() => { setSelectedLevel(level.id); setShowSuggestions(false); }}
-                    className={`w-full p-3 rounded-lg text-left transition-all border ${
-                      selectedLevel === level.id
-                        ? 'border-pink-400 bg-pink-50'
-                        : 'border-gray-200 bg-white hover:border-pink-200'
-                    }`}
-                  >
-                    <span className={`font-semibold text-sm ${selectedLevel === level.id ? 'text-pink-700' : 'text-gray-700'}`}>
-                      {level.label}
-                    </span>
-                    <span className="block text-xs text-gray-400">{level.desc}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Find Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={handleFindFriends}
-              disabled={!selectedCity || selectedInterests.length === 0 || !selectedLevel}
-              className={`w-full py-3 rounded-xl font-bold text-white transition-all ${
-                selectedCity && selectedInterests.length > 0 && selectedLevel
-                  ? 'bg-gradient-to-r from-pink-500 to-rose-500 hover:shadow-lg'
-                  : 'bg-gray-300 cursor-not-allowed'
-              }`}
-            >
-              Find Where to Meet People
-            </motion.button>
-          </motion.div>
-
-          {/* Suggestions Results */}
-          <AnimatePresence>
-            {showSuggestions && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                className="mt-6 space-y-4"
-              >
-                <h3 className="text-xl font-display font-bold text-gray-800">
-                  Suggestions for {selectedCity}
-                </h3>
-                {getSuggestions().map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="bg-white rounded-xl shadow-md border border-gray-200 p-5 card-hover"
-                  >
-                    <span className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-2 ${
-                      item.type === 'Club' ? 'bg-pink-100 text-pink-700' :
-                      item.type === 'Meetup' ? 'bg-emerald-100 text-emerald-700' :
-                      'bg-amber-100 text-amber-700'
-                    }`}>
-                      {item.type}
-                    </span>
-                    <h4 className="text-lg font-bold text-gray-800 mb-1">{item.name}</h4>
-                    <p className="text-gray-600 text-sm mb-3">{item.desc}</p>
-                    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded-r-lg">
-                      <p className="text-sm text-yellow-800"><span className="font-semibold">Tip:</span> {item.tip}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Right: First Message Generator */}
-        <div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sticky top-24"
-          >
-            <h2 className="text-2xl font-display font-bold text-gray-800 mb-2 flex items-center gap-2">
-              <MessageCircle className="w-6 h-6 text-pink-500" />
-              First Message Generator
-            </h2>
-            <p className="text-gray-500 text-sm mb-6">
-              Pick a situation and get a ready-made French message with translation and pronunciation
+            <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Bonjour Buddy</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif mb-6">
+              Find friends
+              <br />
+              <span className="serif-italic text-gray-400">in France</span>
+            </h1>
+            <p className="text-gray-400 text-lg max-w-xl">
+              Discover where to meet people, join communities, and get ready-made French messages to break the ice.
             </p>
+          </motion.div>
+        </div>
+      </section>
 
-            {/* Name Input */}
-            <div className="mb-4">
-              <input
-                type="text"
-                placeholder="Your name (optional)"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-100 outline-none text-gray-700 text-sm"
-              />
-            </div>
+      {/* Main Content */}
+      <section className="py-12">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left: Friend Finder Form */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="bg-[#111] rounded-xl border border-gray-800 p-8"
+              >
+                <h2 className="text-2xl font-serif text-white mb-2 flex items-center gap-3">
+                  <Users className="w-6 h-6 text-gray-500" />
+                  Friend Finder
+                </h2>
+                <p className="text-gray-600 text-sm mb-8">Select your preferences to get personalized suggestions</p>
 
-            {/* Situation Selector */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {messageTemplates.map((msg, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveMessage(idx)}
-                  className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
-                    activeMessage === idx
-                      ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-pink-50 hover:text-pink-600'
+                {/* Step 1: City */}
+                <div className="mb-8">
+                  <h3 className="text-sm font-medium text-gray-400 mb-4 flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    Where are you studying?
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {cities.map((city) => (
+                      <button
+                        key={city.name}
+                        onClick={() => { setSelectedCity(city.name); setShowSuggestions(false); }}
+                        className={`p-3 rounded-lg text-left transition-all border ${
+                          selectedCity === city.name
+                            ? 'border-white bg-white/5 text-white'
+                            : 'border-gray-800 text-gray-400 hover:border-gray-700'
+                        }`}
+                      >
+                        <span className="text-lg mr-2">{city.emoji}</span>
+                        <span className="font-medium text-sm">{city.name}</span>
+                        <span className="block text-xs text-gray-600 ml-7">{city.students} students</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Step 2: Interests */}
+                <div className="mb-8">
+                  <h3 className="text-sm font-medium text-gray-400 mb-4 flex items-center gap-2">
+                    <Heart className="w-4 h-4" />
+                    What are your interests?
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {interests.map((item) => {
+                      const Icon = item.icon;
+                      const isSelected = selectedInterests.includes(item.id);
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => toggleInterest(item.id)}
+                          className={`p-3 rounded-lg flex items-center gap-2 transition-all border text-sm ${
+                            isSelected
+                              ? 'border-white bg-white/5 text-white'
+                              : 'border-gray-800 text-gray-400 hover:border-gray-700'
+                          }`}
+                        >
+                          <Icon className={`w-4 h-4 ${isSelected ? 'text-white' : 'text-gray-600'}`} />
+                          <span className="font-medium">{item.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Step 3: Language Level */}
+                <div className="mb-8">
+                  <h3 className="text-sm font-medium text-gray-400 mb-4 flex items-center gap-2">
+                    <Globe2 className="w-4 h-4" />
+                    Your French level?
+                  </h3>
+                  <div className="space-y-2">
+                    {languageLevels.map((level) => (
+                      <button
+                        key={level.id}
+                        onClick={() => { setSelectedLevel(level.id); setShowSuggestions(false); }}
+                        className={`w-full p-3 rounded-lg text-left transition-all border ${
+                          selectedLevel === level.id
+                            ? 'border-white bg-white/5'
+                            : 'border-gray-800 hover:border-gray-700'
+                        }`}
+                      >
+                        <span className={`font-medium text-sm ${selectedLevel === level.id ? 'text-white' : 'text-gray-400'}`}>
+                          {level.label}
+                        </span>
+                        <span className="block text-xs text-gray-600">{level.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Find Button */}
+                <motion.button
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  onClick={handleFindFriends}
+                  disabled={!selectedCity || selectedInterests.length === 0 || !selectedLevel}
+                  className={`w-full py-4 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${
+                    selectedCity && selectedInterests.length > 0 && selectedLevel
+                      ? 'bg-white text-black hover:bg-gray-100'
+                      : 'bg-gray-800 text-gray-600 cursor-not-allowed'
                   }`}
                 >
-                  <span className="mr-1">{msg.emoji}</span> {msg.situation}
-                </button>
-              ))}
+                  Find Where to Meet People
+                  <ArrowRight className="w-4 h-4" />
+                </motion.button>
+              </motion.div>
+
+              {/* Suggestions Results */}
+              <AnimatePresence>
+                {showSuggestions && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className="mt-8 space-y-4"
+                  >
+                    <h3 className="text-xl font-serif text-white">
+                      Suggestions for {selectedCity}
+                    </h3>
+                    {getSuggestions().map((item, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="bg-[#111] rounded-xl border border-gray-800 p-6"
+                      >
+                        <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full mb-3 ${
+                          item.type === 'Club' ? 'bg-purple-500/20 text-purple-400' :
+                          item.type === 'Meetup' ? 'bg-green-500/20 text-green-400' :
+                          'bg-amber-500/20 text-amber-400'
+                        }`}>
+                          {item.type}
+                        </span>
+                        <h4 className="text-lg font-serif text-white mb-2">{item.name}</h4>
+                        <p className="text-gray-500 text-sm mb-4">{item.desc}</p>
+                        <div className="border-l-2 border-gray-700 pl-4 py-1">
+                          <p className="text-sm text-gray-400"><span className="text-white">Tip:</span> {item.tip}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            {/* Message Display */}
-            <AnimatePresence mode="wait">
+            {/* Right: First Message Generator */}
+            <div>
               <motion.div
-                key={activeMessage}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="space-y-4"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="bg-[#111] rounded-xl border border-gray-800 p-8 sticky top-28"
               >
-                {/* French Message */}
-                <div className="bg-pink-50 rounded-xl p-4 border border-pink-200">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-pink-600">French Message</span>
-                    <div className="flex gap-1">
-                      <button
-                        onClick={() => handleSpeak(messageTemplates[activeMessage].french)}
-                        className="p-1.5 rounded-lg hover:bg-pink-100 transition-colors"
-                        title="Listen"
-                      >
-                        <Volume2 className="w-4 h-4 text-pink-500" />
-                      </button>
-                      <button
-                        onClick={() => handleCopyMessage(messageTemplates[activeMessage].french)}
-                        className="p-1.5 rounded-lg hover:bg-pink-100 transition-colors"
-                        title="Copy"
-                      >
-                        {copiedMsg ? (
-                          <Check className="w-4 h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-4 h-4 text-pink-500" />
-                        )}
-                      </button>
+                <h2 className="text-2xl font-serif text-white mb-2 flex items-center gap-3">
+                  <MessageCircle className="w-6 h-6 text-gray-500" />
+                  First Message Generator
+                </h2>
+                <p className="text-gray-600 text-sm mb-8">
+                  Pick a situation and get a ready-made French message with translation and pronunciation
+                </p>
+
+                {/* Name Input */}
+                <div className="mb-6">
+                  <input
+                    type="text"
+                    placeholder="Your name (optional)"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    className="w-full px-4 py-3 rounded-lg bg-[#0a0a0a] border border-gray-800 focus:border-gray-600 outline-none text-white placeholder-gray-600 text-sm"
+                  />
+                </div>
+
+                {/* Situation Selector */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {messageTemplates.map((msg, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveMessage(idx)}
+                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                        activeMessage === idx
+                          ? 'bg-white text-black'
+                          : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                      }`}
+                    >
+                      <span className="mr-1">{msg.emoji}</span> {msg.situation}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Message Display */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeMessage}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="space-y-4"
+                  >
+                    {/* French Message */}
+                    <div className="bg-purple-500/10 rounded-xl p-5 border border-purple-500/20">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs font-medium text-purple-400">French Message</span>
+                        <div className="flex gap-1">
+                          <button
+                            onClick={() => handleSpeak(messageTemplates[activeMessage].french)}
+                            className="p-2 rounded-lg hover:bg-purple-500/20 transition-colors"
+                            title="Listen"
+                          >
+                            <Volume2 className="w-4 h-4 text-purple-400" />
+                          </button>
+                          <button
+                            onClick={() => handleCopyMessage(messageTemplates[activeMessage].french)}
+                            className="p-2 rounded-lg hover:bg-purple-500/20 transition-colors"
+                            title="Copy"
+                          >
+                            {copiedMsg ? (
+                              <Check className="w-4 h-4 text-green-400" />
+                            ) : (
+                              <Copy className="w-4 h-4 text-purple-400" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                      <p className="text-purple-300 font-medium text-lg leading-relaxed">
+                        {messageTemplates[activeMessage].french.replace(/{name}/g, userName || '[your name]')}
+                      </p>
                     </div>
-                  </div>
-                  <p className="text-pink-700 font-bold text-lg leading-relaxed">
-                    {messageTemplates[activeMessage].french.replace(/{name}/g, userName || '[your name]')}
-                  </p>
-                </div>
 
-                {/* English Translation */}
-                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                  <span className="text-xs font-semibold text-gray-500 block mb-2">English Translation</span>
-                  <p className="text-gray-700 text-base">
-                    {messageTemplates[activeMessage].english.replace(/{name}/g, userName || '[your name]')}
-                  </p>
-                </div>
+                    {/* English Translation */}
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <span className="text-xs font-medium text-gray-600 block mb-2">English Translation</span>
+                      <p className="text-gray-300">
+                        {messageTemplates[activeMessage].english.replace(/{name}/g, userName || '[your name]')}
+                      </p>
+                    </div>
 
-                {/* Pronunciation */}
-                <div className="bg-white rounded-xl p-4 border border-gray-200">
-                  <span className="text-xs font-semibold text-gray-500 block mb-2">Pronunciation Guide</span>
-                  <p className="text-gray-600 font-mono text-sm leading-relaxed">
-                    {messageTemplates[activeMessage].pronunciation.replace(/{name}/g, userName || '[your name]')}
-                  </p>
-                </div>
+                    {/* Pronunciation */}
+                    <div className="bg-[#0a0a0a] rounded-xl p-5 border border-gray-800">
+                      <span className="text-xs font-medium text-gray-600 block mb-2">Pronunciation Guide</span>
+                      <p className="text-gray-400 font-mono text-sm leading-relaxed">
+                        {messageTemplates[activeMessage].pronunciation.replace(/{name}/g, userName || '[your name]')}
+                      </p>
+                    </div>
 
-                {/* Shuffle Button */}
-                <button
-                  onClick={() => setActiveMessage((activeMessage + 1) % messageTemplates.length)}
-                  className="w-full py-2.5 rounded-lg bg-gray-100 text-gray-600 font-semibold text-sm hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
-                >
-                  <RefreshCw className="w-4 h-4" />
-                  Next Situation
-                </button>
+                    {/* Shuffle Button */}
+                    <button
+                      onClick={() => setActiveMessage((activeMessage + 1) % messageTemplates.length)}
+                      className="w-full py-3 rounded-lg bg-gray-800 text-gray-400 font-medium text-sm hover:bg-gray-700 transition-all flex items-center justify-center gap-2"
+                    >
+                      <RefreshCw className="w-4 h-4" />
+                      Next Situation
+                    </button>
+                  </motion.div>
+                </AnimatePresence>
               </motion.div>
-            </AnimatePresence>
-          </motion.div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Bottom CTA */}
-      <div className="mt-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl p-8 text-white text-center">
-        <h2 className="text-2xl font-display font-bold mb-3">Making friends takes courage!</h2>
-        <p className="text-pink-100 max-w-xl mx-auto">
-          Remember: French students appreciate effort. Even imperfect French shows respect. Start with "Bonjour" and a smile - you'll be surprised how friendly people are!
-        </p>
-      </div>
+      <section className="py-20 border-t border-gray-800">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-serif mb-4">
+            Making friends
+            <br />
+            <span className="serif-italic text-gray-400">takes courage</span>
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto">
+            Remember: French students appreciate effort. Even imperfect French shows respect. Start with "Bonjour" and a smile - you'll be surprised how friendly people are!
+          </p>
+        </div>
+      </section>
     </div>
   );
 };

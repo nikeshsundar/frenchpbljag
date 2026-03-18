@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Circle, FileText, Plane, Home, CreditCard, MapPin, Book } from 'lucide-react';
+import { CheckCircle2, Circle, FileText, Plane, Home, CreditCard, MapPin, Book, Download } from 'lucide-react';
 
 const Guides = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -106,158 +106,209 @@ const Guides = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 gradient-text">
-          Your Step-by-Step Journey to France
-        </h1>
-        <p className="text-xl text-gray-600">
-          From application to arrival - everything you need to know
-        </p>
-      </div>
+    <div className="min-h-screen bg-dark pt-24">
+      {/* Hero Section */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-6xl font-serif font-bold mb-6"
+            >
+              <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-blue-400 bg-clip-text text-transparent">
+                Your Step-by-Step Journey
+              </span>
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-xl text-gray-400 max-w-2xl mx-auto"
+            >
+              From application to arrival - everything you need to know
+            </motion.p>
+          </div>
+        </div>
+      </section>
 
-      {/* Interactive Timeline */}
-      <div className="relative">
-        {/* Vertical Line */}
-        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-pink-400 via-pink-500 to-rose-500"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        {/* Interactive Timeline */}
+        <div className="relative">
+          {/* Vertical Line */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 via-violet-500 to-blue-500"></div>
 
-        {/* Timeline Steps */}
-        <div className="space-y-12">
-          {timeline.map((step, index) => {
-            const IconComponent = step.icon;
-            const isActive = activeStep === index;
-            const isLeft = index % 2 === 0;
+          {/* Timeline Steps */}
+          <div className="space-y-12">
+            {timeline.map((step, index) => {
+              const IconComponent = step.icon;
+              const isActive = activeStep === index;
+              const isLeft = index % 2 === 0;
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-              >
-                {/* Timeline Dot */}
-                <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 z-10">
-                  <motion.button
-                    onClick={() => setActiveStep(index)}
-                    whileHover={{ scale: 1.2 }}
-                    className={`w-16 h-16 rounded-full flex items-center justify-center transition-all ${
-                      isActive
-                        ? 'bg-gradient-to-r from-pink-500 to-rose-500 shadow-lg scale-110'
-                        : 'bg-white border-4 border-pink-500'
-                    }`}
-                  >
-                    <IconComponent className={`w-8 h-8 ${isActive ? 'text-white' : 'text-pink-500'}`} />
-                  </motion.button>
-                </div>
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                >
+                  {/* Timeline Dot */}
+                  <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 z-10">
+                    <motion.button
+                      onClick={() => setActiveStep(index)}
+                      whileHover={{ scale: 1.2 }}
+                      className={`w-16 h-16 rounded-full flex items-center justify-center transition-all ${
+                        isActive
+                          ? 'bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg shadow-purple-500/50 scale-110'
+                          : 'bg-dark-card border-2 border-purple-500/50 hover:border-purple-400'
+                      }`}
+                    >
+                      <IconComponent className={`w-8 h-8 ${isActive ? 'text-white' : 'text-purple-400'}`} />
+                    </motion.button>
+                  </div>
 
-                {/* Content Card */}
-                <div className={`md:w-5/12 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
-                  <motion.div
-                    onClick={() => setActiveStep(index)}
-                    whileHover={{ y: -5 }}
-                    className={`bg-white rounded-xl shadow-lg p-6 cursor-pointer transition-all border ${
-                      isActive ? 'border-pink-400 shadow-2xl' : 'border-gray-200'
-                    }`}
-                  >
-                    {/* Mobile Icon */}
-                    <div className="md:hidden mb-4">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                        isActive ? 'bg-gradient-to-r from-pink-500 to-rose-500' : 'bg-pink-50'
-                      }`}>
-                        <IconComponent className={`w-6 h-6 ${isActive ? 'text-white' : 'text-pink-500'}`} />
+                  {/* Content Card */}
+                  <div className={`md:w-5/12 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+                    <motion.div
+                      onClick={() => setActiveStep(index)}
+                      whileHover={{ y: -5 }}
+                      className={`bg-white/5 backdrop-blur-sm rounded-xl p-6 cursor-pointer transition-all border ${
+                        isActive 
+                          ? 'border-purple-500/50 shadow-lg shadow-purple-500/10' 
+                          : 'border-white/10 hover:border-purple-500/30'
+                      }`}
+                    >
+                      {/* Mobile Icon */}
+                      <div className="md:hidden mb-4">
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                          isActive 
+                            ? 'bg-gradient-to-r from-purple-500 to-blue-500' 
+                            : 'bg-purple-500/20'
+                        }`}>
+                          <IconComponent className={`w-6 h-6 ${isActive ? 'text-white' : 'text-purple-400'}`} />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="text-sm font-semibold text-pink-600 mb-2">{step.month}</div>
-                    <h3 className="text-2xl font-display font-bold text-gray-800 mb-4">{step.title}</h3>
+                      <div className="text-sm font-semibold text-purple-400 mb-2">{step.month}</div>
+                      <h3 className="text-2xl font-serif font-bold text-white mb-4">{step.title}</h3>
 
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                      >
-                        <div className="space-y-2 mb-4">
-                          {step.tasks.map((task, idx) => (
-                            <div key={idx} className="flex items-start">
-                              <CheckCircle2 className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                              <span className="text-gray-700 text-sm">{task}</span>
-                            </div>
-                          ))}
-                        </div>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                        >
+                          <div className="space-y-2 mb-4">
+                            {step.tasks.map((task, idx) => (
+                              <div key={idx} className="flex items-start">
+                                <CheckCircle2 className="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
+                                <span className="text-gray-300 text-sm">{task}</span>
+                              </div>
+                            ))}
+                          </div>
 
-                        <div className="bg-yellow-50 border-l-4 border-yellow-500 p-3">
-                          <p className="text-sm text-yellow-800">
-                            <span className="font-semibold">💡 Pro Tip:</span> {step.tips}
-                          </p>
-                        </div>
-                      </motion.div>
-                    )}
+                          <div className="bg-yellow-500/10 border-l-4 border-yellow-500 p-3 rounded-r">
+                            <p className="text-sm text-yellow-200">
+                              <span className="font-semibold">Pro Tip:</span> {step.tips}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
 
-                    {!isActive && (
-                      <button className="text-pink-600 text-sm font-semibold hover:underline">
-                        Click to expand →
-                      </button>
-                    )}
-                  </motion.div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Quick Links Section */}
-      <div className="mt-16 grid md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-          <div className="w-12 h-12 bg-pink-50 rounded-lg flex items-center justify-center mb-4">
-            <span className="text-2xl">📚</span>
+                      {!isActive && (
+                        <button className="text-purple-400 text-sm font-semibold hover:text-purple-300 transition-colors">
+                          Click to expand →
+                        </button>
+                      )}
+                    </motion.div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
-          <h3 className="text-xl font-bold mb-3 text-gray-900">Useful Resources</h3>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li>• Campus France Official Website</li>
-            <li>• VFS France Visa Information</li>
-            <li>• CROUS Housing Portal</li>
-            <li>• CAF Housing Assistance</li>
-          </ul>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-          <div className="w-12 h-12 bg-pink-50 rounded-lg flex items-center justify-center mb-4">
-            <span className="text-2xl">💰</span>
+        {/* Quick Links Section */}
+        <div className="mt-16 grid md:grid-cols-3 gap-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-purple-500/30 transition-all"
+          >
+            <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">📚</span>
+            </div>
+            <h3 className="text-xl font-serif font-bold mb-3 text-white">Useful Resources</h3>
+            <ul className="space-y-2 text-sm text-gray-400">
+              <li className="hover:text-purple-400 transition-colors cursor-pointer">• Campus France Official Website</li>
+              <li className="hover:text-purple-400 transition-colors cursor-pointer">• VFS France Visa Information</li>
+              <li className="hover:text-purple-400 transition-colors cursor-pointer">• CROUS Housing Portal</li>
+              <li className="hover:text-purple-400 transition-colors cursor-pointer">• CAF Housing Assistance</li>
+            </ul>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-purple-500/30 transition-all"
+          >
+            <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">💰</span>
+            </div>
+            <h3 className="text-xl font-serif font-bold mb-3 text-white">Cost Breakdown</h3>
+            <ul className="space-y-2 text-sm text-gray-400">
+              <li>• Tuition: <span className="text-purple-400">€2,500 - €15,000</span>/year</li>
+              <li>• Rent: <span className="text-purple-400">€300 - €800</span>/month</li>
+              <li>• Food: <span className="text-purple-400">€200 - €300</span>/month</li>
+              <li>• Transport: <span className="text-purple-400">€30 - €75</span>/month</li>
+            </ul>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-purple-500/30 transition-all"
+          >
+            <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">⏰</span>
+            </div>
+            <h3 className="text-xl font-serif font-bold mb-3 text-white">Key Deadlines</h3>
+            <ul className="space-y-2 text-sm text-gray-400">
+              <li>• Applications: <span className="text-blue-400">Jan - Apr</span></li>
+              <li>• Campus France: <span className="text-blue-400">Feb - May</span></li>
+              <li>• Visa: <span className="text-blue-400">May - Jul</span></li>
+              <li>• Arrival: <span className="text-blue-400">Aug - Sep</span></li>
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Download CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 relative overflow-hidden rounded-2xl"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,...')] opacity-10"></div>
+          <div className="relative p-8 md:p-12 text-white text-center">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold mb-3">Want a printable checklist?</h2>
+            <p className="mb-6 text-purple-100 max-w-2xl mx-auto">
+              Download our comprehensive PDF guide with all steps and document requirements
+            </p>
+            <button className="inline-flex items-center bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-white/25 transition-all transform hover:-translate-y-1">
+              <Download className="w-5 h-5 mr-2" />
+              Download PDF Guide
+            </button>
           </div>
-          <h3 className="text-xl font-bold mb-3 text-gray-900">Cost Breakdown</h3>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li>• Tuition: €2,500 - €15,000/year</li>
-            <li>• Rent: €300 - €800/month</li>
-            <li>• Food: €200 - €300/month</li>
-            <li>• Transport: €30 - €75/month</li>
-          </ul>
-        </div>
-
-        <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-          <div className="w-12 h-12 bg-pink-50 rounded-lg flex items-center justify-center mb-4">
-            <span className="text-2xl">⏰</span>
-          </div>
-          <h3 className="text-xl font-bold mb-3 text-gray-900">Key Deadlines</h3>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li>• Applications: Jan - Apr</li>
-            <li>• Campus France: Feb - May</li>
-            <li>• Visa: May - Jul</li>
-            <li>• Arrival: Aug - Sep</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Download CTA */}
-      <div className="mt-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl p-8 text-white text-center">
-        <h2 className="text-2xl font-display font-bold mb-3">Want a printable checklist?</h2>
-        <p className="mb-6 text-pink-100">Download our comprehensive PDF guide with all steps and document requirements</p>
-        <button className="bg-white text-pink-600 px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:-translate-y-1">
-          Download PDF Guide
-        </button>
+        </motion.div>
       </div>
     </div>
   );

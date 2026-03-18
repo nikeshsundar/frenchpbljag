@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Globe, GraduationCap, Menu, X, ChevronDown } from 'lucide-react';
+import { Globe, Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 
@@ -10,10 +10,20 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en');
   };
+
+  // Handle scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -27,60 +37,47 @@ const Navbar = () => {
   }, []);
 
   const mainLinks = [
-    { path: '/', label: t('nav.home') },
-    { path: '/universities', label: t('nav.universities') },
-    { path: '/jobs', label: t('nav.jobs') },
-    { path: '/community', label: t('nav.community') },
-    { path: '/guides', label: t('nav.guides') },
+    { path: '/universities', label: 'Universities' },
+    { path: '/jobs', label: 'Jobs' },
+    { path: '/community', label: 'Community' },
+    { path: '/guides', label: 'Guides' },
   ];
 
   const toolsLinks = [
-    { path: '/career-help', label: t('nav.careerHelp') },
-    { path: '/find-friends', label: t('nav.findFriends') },
-    { path: '/culture-guide', label: t('nav.cultureGuide') },
-    { path: '/day-simulator', label: t('nav.daySimulator') },
+    { path: '/career-help', label: 'Career Help' },
+    { path: '/find-friends', label: 'Find Friends' },
+    { path: '/culture-guide', label: 'Culture Guide' },
+    { path: '/day-simulator', label: 'Day Simulator' },
   ];
 
   const isToolsActive = toolsLinks.some(link => location.pathname === link.path);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-gray-800/50' : 'bg-transparent'
+    }`}>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <motion.div
-              whileHover={{ rotate: 360, scale: 1.1 }}
-              transition={{ duration: 0.5 }}
-              className="relative"
-            >
-              <GraduationCap className="h-8 w-8 text-pink-500 group-hover:text-pink-600 transition-colors" />
-            </motion.div>
-            <span className="text-xl font-display font-black text-gray-900">
-              Study<span className="text-pink-500">Bridge</span>
+          <Link to="/" className="flex items-center">
+            <span className="text-xl font-serif text-white">
+              StudyBridge
             </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links - Center */}
           <div className="hidden md:flex items-center space-x-1">
             {mainLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-4 py-2 rounded-lg font-semibold transition-all ${
+                className={`px-4 py-2 text-sm transition-colors ${
                   location.pathname === link.path
-                    ? 'text-pink-600'
-                    : 'text-gray-600 hover:text-pink-500'
+                    ? 'text-white'
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
                 {link.label}
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-pink-500 rounded-full"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
               </Link>
             ))}
 
@@ -88,41 +85,34 @@ const Navbar = () => {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
-                className={`relative flex items-center gap-1 px-4 py-2 rounded-lg font-semibold transition-all ${
+                className={`flex items-center gap-1 px-4 py-2 text-sm transition-colors ${
                   isToolsActive
-                    ? 'text-pink-600'
-                    : 'text-gray-600 hover:text-pink-500'
+                    ? 'text-white'
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
-                {t('nav.bonjourBuddy')}
-                <ChevronDown className={`w-4 h-4 transition-transform ${toolsDropdownOpen ? 'rotate-180' : ''}`} />
-                {isToolsActive && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-pink-500 rounded-full"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
+                Bonjour Buddy
+                <ChevronDown className={`w-3 h-3 transition-transform ${toolsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               <AnimatePresence>
                 {toolsDropdownOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: -5 }}
+                    initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-gray-200 py-2 z-50"
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-[#141414] rounded-lg border border-gray-800 py-2 shadow-2xl"
                   >
                     {toolsLinks.map((link) => (
                       <Link
                         key={link.path}
                         to={link.path}
                         onClick={() => setToolsDropdownOpen(false)}
-                        className={`block px-4 py-2.5 text-sm font-semibold transition-all ${
+                        className={`block px-4 py-2.5 text-sm transition-colors ${
                           location.pathname === link.path
-                            ? 'bg-pink-50 text-pink-600'
-                            : 'text-gray-600 hover:bg-pink-50 hover:text-pink-600'
+                            ? 'text-white bg-gray-800/50'
+                            : 'text-gray-400 hover:text-white hover:bg-gray-800/30'
                         }`}
                       >
                         {link.label}
@@ -134,27 +124,34 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Right Side - Language Toggle & Mobile Menu */}
-          <div className="flex items-center gap-3">
+          {/* Right Side - Contact & Language */}
+          <div className="hidden md:flex items-center gap-6">
             {/* Language Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gray-100 hover:bg-pink-50 border border-gray-200 hover:border-pink-200 text-gray-700 hover:text-pink-600 transition-all"
-            >
-              <Globe className="h-5 w-5" />
-              <span className="font-bold">{i18n.language === 'en' ? 'EN' : 'FR'}</span>
-            </motion.button>
-
-            {/* Mobile Menu Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-gray-100 border border-gray-200 text-pink-500 hover:bg-pink-50 transition-all"
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <Globe className="w-4 h-4" />
+              <span>{i18n.language === 'en' ? 'EN' : 'FR'}</span>
             </button>
+
+            {/* Contact Button */}
+            <Link
+              to="/universities"
+              className="flex items-center gap-2 text-sm text-white hover:gap-3 transition-all"
+            >
+              Get Started
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 text-white"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
 
         {/* Mobile Menu */}
@@ -165,18 +162,29 @@ const Navbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-[#0a0a0a] border-t border-gray-800"
             >
-              <div className="py-4 space-y-2">
+              <div className="py-6 space-y-1">
+                <Link
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block px-4 py-3 text-sm transition-colors ${
+                    location.pathname === '/'
+                      ? 'text-white'
+                      : 'text-gray-400'
+                  }`}
+                >
+                  Home
+                </Link>
                 {mainLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block px-4 py-3 rounded-lg font-semibold transition-all ${
+                    className={`block px-4 py-3 text-sm transition-colors ${
                       location.pathname === link.path
-                        ? 'bg-pink-500 text-white'
-                        : 'bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-600 border border-gray-200'
+                        ? 'text-white'
+                        : 'text-gray-400'
                     }`}
                   >
                     {link.label}
@@ -184,24 +192,35 @@ const Navbar = () => {
                 ))}
 
                 {/* Bonjour Buddy Section in Mobile */}
-                <div className="pt-2">
-                  <p className="px-4 py-1 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                    {t('nav.bonjourBuddy')}
+                <div className="pt-4 mt-4 border-t border-gray-800">
+                  <p className="px-4 py-2 text-xs tracking-widest uppercase text-gray-600">
+                    Bonjour Buddy
                   </p>
                   {toolsLinks.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-3 rounded-lg font-semibold transition-all ${
+                      className={`block px-4 py-3 text-sm transition-colors ${
                         location.pathname === link.path
-                          ? 'bg-pink-500 text-white'
-                          : 'bg-gray-50 text-gray-700 hover:bg-pink-50 hover:text-pink-600 border border-gray-200'
+                          ? 'text-white'
+                          : 'text-gray-400'
                       }`}
                     >
                       {link.label}
                     </Link>
                   ))}
+                </div>
+
+                {/* Language Toggle Mobile */}
+                <div className="pt-4 mt-4 border-t border-gray-800 px-4">
+                  <button
+                    onClick={toggleLanguage}
+                    className="flex items-center gap-2 text-sm text-gray-400"
+                  >
+                    <Globe className="w-4 h-4" />
+                    <span>{i18n.language === 'en' ? 'English' : 'Français'}</span>
+                  </button>
                 </div>
               </div>
             </motion.div>

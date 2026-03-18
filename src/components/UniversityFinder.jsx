@@ -88,10 +88,10 @@ const UniversityFinder = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-display font-bold mb-4 gradient-text">
+        <h2 className="text-4xl font-serif font-bold mb-4 bg-gradient-to-r from-purple-400 via-violet-400 to-blue-400 bg-clip-text text-transparent">
           {t('finder.title')}
         </h2>
-        <p className="text-gray-600 text-lg">
+        <p className="text-gray-400 text-lg">
           Answer a few questions and let AI find your perfect match
         </p>
       </div>
@@ -99,22 +99,29 @@ const UniversityFinder = () => {
       {/* Multi-step Form */}
       {step <= 3 && (
       <div className="max-w-3xl mx-auto mb-12">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8">
           {/* Progress Indicator */}
           <div className="flex items-center justify-center mb-8">
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                  step >= s ? 'bg-pink-500 text-white' : 'bg-gray-200 text-gray-500'
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all ${
+                  step >= s 
+                    ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' 
+                    : 'bg-white/10 text-gray-500 border border-white/20'
                 }`}>
                   {s}
                 </div>
                 {s < 3 && (
-                  <div className={`w-16 h-1 mx-2 rounded ${step > s ? 'bg-pink-500' : 'bg-gray-200'}`} />
+                  <div className={`w-16 h-1 mx-2 rounded transition-all ${
+                    step > s 
+                      ? 'bg-gradient-to-r from-purple-500 to-blue-500' 
+                      : 'bg-white/10'
+                  }`} />
                 )}
               </div>
             ))}
           </div>
+          
           {/* Step 1: CGPA */}
           {step === 1 && (
             <motion.div
@@ -122,9 +129,9 @@ const UniversityFinder = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">{t('finder.step1')}</h3>
-              <label className="block mb-4 text-gray-700 font-medium">
-                {t('finder.cgpa')}: <span className="text-pink-600 text-2xl font-bold">{formData.cgpa.toFixed(1)}</span>/10
+              <h3 className="text-2xl font-serif font-semibold mb-6 text-white">{t('finder.step1')}</h3>
+              <label className="block mb-4 text-gray-300 font-medium">
+                {t('finder.cgpa')}: <span className="text-purple-400 text-2xl font-bold">{formData.cgpa.toFixed(1)}</span>/10
               </label>
               <input
                 type="range"
@@ -133,7 +140,7 @@ const UniversityFinder = () => {
                 step="0.1"
                 value={formData.cgpa}
                 onChange={(e) => setFormData({ ...formData, cgpa: parseFloat(e.target.value) })}
-                className="w-full h-3 bg-pink-100 rounded-lg appearance-none cursor-pointer accent-pink-500"
+                className="w-full h-3 bg-white/10 rounded-lg appearance-none cursor-pointer accent-purple-500"
               />
               <div className="flex justify-between text-sm text-gray-500 mt-2">
                 <span>0.0</span>
@@ -142,7 +149,7 @@ const UniversityFinder = () => {
               </div>
               <button
                 onClick={() => setStep(2)}
-                className="mt-8 w-full bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition-all shadow-md hover:shadow-lg"
+                className="mt-8 w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg hover:shadow-purple-500/25"
               >
                 Next Step
               </button>
@@ -156,22 +163,22 @@ const UniversityFinder = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">{t('finder.step2')}</h3>
+              <h3 className="text-2xl font-serif font-semibold mb-6 text-white">{t('finder.step2')}</h3>
               
-              <label className="block mb-2 text-gray-700 font-medium">{t('finder.course')}</label>
+              <label className="block mb-2 text-gray-300 font-medium">{t('finder.course')}</label>
               <select
                 value={formData.course}
                 onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-                className="w-full mb-6 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+                className="w-full mb-6 p-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
               >
-                <option value="">Select a course...</option>
+                <option value="" className="bg-dark-card">Select a course...</option>
                 {courses.map(course => (
-                  <option key={course} value={course}>{course}</option>
+                  <option key={course} value={course} className="bg-dark-card">{course}</option>
                 ))}
               </select>
 
-              <label className="block mb-2 text-gray-700 font-medium">
-                {t('finder.budget')}: <span className="text-pink-600 font-bold">€{formData.budget.toLocaleString()}</span>/year
+              <label className="block mb-2 text-gray-300 font-medium">
+                {t('finder.budget')}: <span className="text-purple-400 font-bold">€{formData.budget.toLocaleString()}</span>/year
               </label>
               <input
                 type="range"
@@ -180,7 +187,7 @@ const UniversityFinder = () => {
                 step="1000"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: parseInt(e.target.value) })}
-                className="w-full h-3 bg-pink-100 rounded-lg appearance-none cursor-pointer accent-pink-500"
+                className="w-full h-3 bg-white/10 rounded-lg appearance-none cursor-pointer accent-purple-500"
               />
               <div className="flex justify-between text-sm text-gray-500 mt-2">
                 <span>€2k</span>
@@ -191,13 +198,13 @@ const UniversityFinder = () => {
               <div className="flex gap-4 mt-8">
                 <button
                   onClick={() => setStep(1)}
-                  className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all"
+                  className="flex-1 bg-white/10 text-white py-3 rounded-lg font-semibold hover:bg-white/20 transition-all border border-white/20"
                 >
                   Back
                 </button>
                 <button
                   onClick={() => setStep(3)}
-                  className="flex-1 bg-pink-500 text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition-all shadow-md hover:shadow-lg"
+                  className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg hover:shadow-purple-500/25"
                 >
                   Next Step
                 </button>
@@ -212,36 +219,36 @@ const UniversityFinder = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">{t('finder.step3')}</h3>
+              <h3 className="text-2xl font-serif font-semibold mb-6 text-white">{t('finder.step3')}</h3>
               
-              <label className="block mb-2 text-gray-700 font-medium">{t('finder.city')} (Optional)</label>
+              <label className="block mb-2 text-gray-300 font-medium">{t('finder.city')} (Optional)</label>
               <input
                 type="text"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 placeholder="e.g., Paris, Lyon, Toulouse..."
-                className="w-full mb-6 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+                className="w-full mb-6 p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
               />
 
-              <label className="block mb-2 text-gray-700 font-medium">Other Preferences (Optional)</label>
+              <label className="block mb-2 text-gray-300 font-medium">Other Preferences (Optional)</label>
               <textarea
                 value={formData.preferences}
                 onChange={(e) => setFormData({ ...formData, preferences: e.target.value })}
                 placeholder="e.g., Looking for research opportunities, prefer English-taught programs..."
-                className="w-full mb-6 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 h-24"
+                className="w-full mb-6 p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 h-24"
               />
 
               <div className="flex gap-4 mt-8">
                 <button
                   onClick={() => setStep(2)}
-                  className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all"
+                  className="flex-1 bg-white/10 text-white py-3 rounded-lg font-semibold hover:bg-white/20 transition-all border border-white/20"
                 >
                   Back
                 </button>
                 <button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="flex-1 bg-gradient-to-r from-pink-500 to-rose-500 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all flex items-center justify-center"
+                  className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg hover:shadow-purple-500/25 flex items-center justify-center"
                 >
                   {loading ? (
                     <>
@@ -269,12 +276,12 @@ const UniversityFinder = () => {
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-3xl font-display font-bold text-gray-900">
+            <h3 className="text-3xl font-serif font-bold text-white">
               {t('finder.results')} ({results.length} universities found)
             </h3>
             <button
               onClick={() => { setStep(1); setResults([]); setAiMatches([]); }}
-              className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition-all shadow-md font-semibold flex items-center gap-2"
+              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg font-semibold flex items-center gap-2"
             >
               <Search className="w-4 h-4" />
               Search Again
@@ -290,7 +297,7 @@ const UniversityFinder = () => {
                 <motion.div
                   key={uni.id}
                   whileHover={{ y: -8 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-200"
+                  className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-purple-500/50 transition-all"
                 >
                   <img
                     src={uni.image}
@@ -299,42 +306,42 @@ const UniversityFinder = () => {
                   />
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="text-xl font-semibold text-gray-800">{uni.name}</h4>
+                      <h4 className="text-xl font-semibold text-white">{uni.name}</h4>
                       {matchScore && (
-                        <div className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-bold flex items-center">
+                        <div className="bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full text-sm font-bold flex items-center border border-purple-500/30">
                           <Sparkles className="w-4 h-4 mr-1" />
                           {matchScore}%
                         </div>
                       )}
                     </div>
                     
-                    <div className="flex items-center text-gray-600 text-sm mb-2">
+                    <div className="flex items-center text-gray-400 text-sm mb-2">
                       <MapPin className="w-4 h-4 mr-1" />
                       {uni.city}, {uni.region}
                     </div>
                     
                     <div className="flex items-center justify-between text-sm mb-3">
-                      <span className="flex items-center text-gray-600">
+                      <span className="flex items-center text-gray-400">
                         <Euro className="w-4 h-4 mr-1" />
                         €{uni.tuitionFees.toLocaleString()}/year
                       </span>
-                      <span className="flex items-center text-gray-600">
+                      <span className="flex items-center text-gray-400">
                         <Trophy className="w-4 h-4 mr-1" />
                         QS #{uni.qsRanking}
                       </span>
                     </div>
 
                     {aiInsights && (
-                      <div className="bg-pink-50 border-l-4 border-pink-500 p-3 mb-3 text-sm rounded-r">
-                        <p className="text-gray-700 mb-2">{aiInsights.reasoning}</p>
-                        <p className="text-green-700 font-semibold">✓ {aiInsights.strength}</p>
-                        <p className="text-orange-700">⚠ {aiInsights.consideration}</p>
+                      <div className="bg-purple-500/10 border-l-4 border-purple-500 p-3 mb-3 text-sm rounded-r">
+                        <p className="text-gray-300 mb-2">{aiInsights.reasoning}</p>
+                        <p className="text-green-400 font-semibold">✓ {aiInsights.strength}</p>
+                        <p className="text-yellow-400">⚠ {aiInsights.consideration}</p>
                       </div>
                     )}
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {uni.programs.slice(0, 3).map((program, idx) => (
-                        <span key={idx} className="bg-pink-50 text-pink-700 px-2 py-1 rounded text-xs font-medium">
+                        <span key={idx} className="bg-white/10 text-purple-300 px-2 py-1 rounded text-xs font-medium border border-white/10">
                           {program}
                         </span>
                       ))}
@@ -344,7 +351,7 @@ const UniversityFinder = () => {
                       href={uni.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition-all shadow-md hover:shadow-lg"
+                      className="flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg hover:shadow-purple-500/25"
                     >
                       Visit Website
                       <ExternalLink className="w-4 h-4 ml-2" />
@@ -365,11 +372,11 @@ const UniversityFinder = () => {
           className="text-center py-16"
         >
           <div className="text-6xl mb-4">🔍</div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-2">No universities found</h3>
-          <p className="text-gray-600 mb-6">Try adjusting your CGPA, budget, or course selection to see more results.</p>
+          <h3 className="text-2xl font-bold text-white mb-2">No universities found</h3>
+          <p className="text-gray-400 mb-6">Try adjusting your CGPA, budget, or course selection to see more results.</p>
           <button
             onClick={() => { setStep(1); setResults([]); setAiMatches([]); }}
-            className="bg-pink-500 text-white px-8 py-3 rounded-lg hover:bg-pink-600 transition-all shadow-md font-semibold"
+            className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg font-semibold"
           >
             Try Again
           </button>
