@@ -92,7 +92,7 @@ const UniversityFinder = () => {
           {t('finder.title')}
         </h2>
         <p className="text-gray-400 text-lg">
-          Answer a few questions and let AI find your perfect match
+          {t('finder.subtitle')}
         </p>
       </div>
 
@@ -171,7 +171,7 @@ const UniversityFinder = () => {
                 onChange={(e) => setFormData({ ...formData, course: e.target.value })}
                 className="w-full mb-6 p-3 bg-white/5 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
               >
-                <option value="" className="bg-dark-card">Select a course...</option>
+                <option value="" className="bg-dark-card">{t('finder.selectCourse')}</option>
                 {courses.map(course => (
                   <option key={course} value={course} className="bg-dark-card">{course}</option>
                 ))}
@@ -200,13 +200,13 @@ const UniversityFinder = () => {
                   onClick={() => setStep(1)}
                   className="flex-1 bg-white/10 text-white py-3 rounded-lg font-semibold hover:bg-white/20 transition-all border border-white/20"
                 >
-                  Back
+                  {t('common.back')}
                 </button>
                 <button
                   onClick={() => setStep(3)}
                   className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-lg font-semibold hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg hover:shadow-purple-500/25"
                 >
-                  Next Step
+                  {t('common.nextStep')}
                 </button>
               </div>
             </motion.div>
@@ -221,20 +221,20 @@ const UniversityFinder = () => {
             >
               <h3 className="text-2xl font-serif font-semibold mb-6 text-white">{t('finder.step3')}</h3>
               
-              <label className="block mb-2 text-gray-300 font-medium">{t('finder.city')} (Optional)</label>
+              <label className="block mb-2 text-gray-300 font-medium">{t('finder.cityOptional', { city: t('finder.city') })}</label>
               <input
                 type="text"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                placeholder="e.g., Paris, Lyon, Toulouse..."
+                placeholder={t('finder.cityPlaceholder')}
                 className="w-full mb-6 p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
               />
 
-              <label className="block mb-2 text-gray-300 font-medium">Other Preferences (Optional)</label>
+              <label className="block mb-2 text-gray-300 font-medium">{t('finder.otherPreferences')}</label>
               <textarea
                 value={formData.preferences}
                 onChange={(e) => setFormData({ ...formData, preferences: e.target.value })}
-                placeholder="e.g., Looking for research opportunities, prefer English-taught programs..."
+                placeholder={t('finder.preferencesPlaceholder')}
                 className="w-full mb-6 p-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 h-24"
               />
 
@@ -243,7 +243,7 @@ const UniversityFinder = () => {
                   onClick={() => setStep(2)}
                   className="flex-1 bg-white/10 text-white py-3 rounded-lg font-semibold hover:bg-white/20 transition-all border border-white/20"
                 >
-                  Back
+                  {t('common.back')}
                 </button>
                 <button
                   onClick={handleSubmit}
@@ -253,7 +253,7 @@ const UniversityFinder = () => {
                   {loading ? (
                     <>
                       <Loader2 className="animate-spin mr-2" />
-                      Analyzing...
+                      {t('finder.analyzing')}
                     </>
                   ) : (
                     <>
@@ -277,14 +277,14 @@ const UniversityFinder = () => {
         >
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-3xl font-serif font-bold text-white">
-              {t('finder.results')} ({results.length} universities found)
+              {t('finder.results')} ({t('finder.resultsCount', { count: results.length })})
             </h3>
             <button
               onClick={() => { setStep(1); setResults([]); setAiMatches([]); }}
               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg font-semibold flex items-center gap-2"
             >
               <Search className="w-4 h-4" />
-              Search Again
+              {t('finder.searchAgain')}
             </button>
           </div>
           
@@ -353,7 +353,7 @@ const UniversityFinder = () => {
                       rel="noopener noreferrer"
                       className="flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg hover:shadow-purple-500/25"
                     >
-                      Visit Website
+                      {t('finder.visitWebsite')}
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </a>
                   </div>
@@ -372,13 +372,13 @@ const UniversityFinder = () => {
           className="text-center py-16"
         >
           <div className="text-6xl mb-4">🔍</div>
-          <h3 className="text-2xl font-bold text-white mb-2">No universities found</h3>
-          <p className="text-gray-400 mb-6">Try adjusting your CGPA, budget, or course selection to see more results.</p>
+          <h3 className="text-2xl font-bold text-white mb-2">{t('finder.noResultsTitle')}</h3>
+          <p className="text-gray-400 mb-6">{t('finder.noResultsDescription')}</p>
           <button
             onClick={() => { setStep(1); setResults([]); setAiMatches([]); }}
             className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg font-semibold"
           >
-            Try Again
+            {t('common.tryAgain')}
           </button>
         </motion.div>
       )}

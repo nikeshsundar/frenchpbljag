@@ -14,13 +14,23 @@ const categoryConfig = {
 };
 
 const CareerHelp = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isFr = i18n.language === 'fr';
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedSituation, setExpandedSituation] = useState(null);
   const [copiedPhrase, setCopiedPhrase] = useState(null);
 
   const categories = ['All', ...Object.keys(categoryConfig)];
+
+  const categoryLabels = {
+    Academic: isFr ? 'Academique' : 'Academic',
+    Professional: isFr ? 'Professionnel' : 'Professional',
+    'Daily Life': isFr ? 'Vie quotidienne' : 'Daily Life',
+    Social: isFr ? 'Social' : 'Social',
+    Administrative: isFr ? 'Administratif' : 'Administrative',
+    Emergency: isFr ? 'Urgence' : 'Emergency'
+  };
 
   const filteredPhrases = useMemo(() => {
     let filtered = phrasesData;
@@ -75,14 +85,14 @@ const CareerHelp = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Bonjour Buddy</p>
+            <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">{t('nav.bonjourBuddy')}</p>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif mb-6">
-              French phrases
+              {isFr ? 'Phrases francaises' : 'French phrases'}
               <br />
-              <span className="serif-italic text-gray-400">& career help</span>
+              <span className="serif-italic text-gray-400">{isFr ? '& aide carriere' : '& career help'}</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-xl">
-              Essential French phrases for every situation - with pronunciation guides, tone indicators, and ready-made templates.
+              {t('careerHelp.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -96,7 +106,7 @@ const CareerHelp = () => {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-600" />
               <input
                 type="text"
-                placeholder="Search phrases, situations, or topics..."
+                placeholder={t('careerHelp.search')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 rounded-lg bg-[#111] border border-gray-800 focus:border-gray-600 outline-none transition-all text-white placeholder-gray-600"
@@ -122,7 +132,7 @@ const CareerHelp = () => {
                       : 'bg-transparent border border-gray-700 text-gray-400 hover:border-gray-500 hover:text-white'
                   }`}
                 >
-                  {cat === 'All' ? 'All Categories' : cat}
+                  {cat === 'All' ? t('careerHelp.allCategories') : categoryLabels[cat] || cat}
                 </button>
               );
             })}
@@ -134,8 +144,8 @@ const CareerHelp = () => {
       <section className="pb-12">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex gap-6 text-sm text-gray-600">
-            <span>{filteredPhrases.length} situation{filteredPhrases.length !== 1 ? 's' : ''}</span>
-            <span>{filteredPhrases.reduce((acc, s) => acc + s.phrases.length, 0)} phrases</span>
+            <span>{filteredPhrases.length} {isFr ? (filteredPhrases.length > 1 ? 'situations' : 'situation') : `situation${filteredPhrases.length !== 1 ? 's' : ''}`}</span>
+            <span>{filteredPhrases.reduce((acc, s) => acc + s.phrases.length, 0)} {isFr ? 'phrases' : 'phrases'}</span>
           </div>
         </div>
       </section>
@@ -169,7 +179,7 @@ const CareerHelp = () => {
                         </div>
                         <div className="flex-1">
                           <span className="text-xs tracking-wider uppercase text-gray-500">
-                            {situation.category}
+                            {categoryLabels[situation.category] || situation.category}
                           </span>
                           <h3 className="text-lg font-serif text-white mt-1">{situation.situation}</h3>
                         </div>
@@ -185,7 +195,7 @@ const CareerHelp = () => {
 
                       {!isExpanded && (
                         <p className="text-xs text-gray-600 mt-4">
-                          {situation.phrases.length} phrases - Click to expand
+                          {situation.phrases.length} {isFr ? 'phrases - Cliquez pour developper' : 'phrases - Click to expand'}
                         </p>
                       )}
                     </div>
@@ -220,14 +230,14 @@ const CareerHelp = () => {
                                       <button
                                         onClick={() => handleSpeak(phrase.french)}
                                         className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
-                                        title="Listen to pronunciation"
+                                         title={isFr ? 'Ecouter la prononciation' : 'Listen to pronunciation'}
                                       >
                                         <Volume2 className="w-4 h-4 text-gray-500" />
                                       </button>
                                       <button
                                         onClick={() => handleCopy(phrase.french, phraseId)}
                                         className="p-2 rounded-lg hover:bg-gray-800 transition-colors"
-                                        title="Copy to clipboard"
+                                         title={isFr ? 'Copier' : 'Copy to clipboard'}
                                       >
                                         {copiedPhrase === phraseId ? (
                                           <Check className="w-4 h-4 text-green-500" />
@@ -243,7 +253,7 @@ const CareerHelp = () => {
 
                                   {/* Pronunciation */}
                                   <div className="bg-gray-900 rounded-lg px-3 py-2 mb-3 border border-gray-800">
-                                    <p className="text-xs text-gray-600 mb-1">Pronunciation</p>
+                                     <p className="text-xs text-gray-600 mb-1">{isFr ? 'Prononciation' : 'Pronunciation'}</p>
                                     <p className="text-gray-300 text-sm font-mono">{phrase.pronunciation}</p>
                                   </div>
 
@@ -268,8 +278,8 @@ const CareerHelp = () => {
           {filteredPhrases.length === 0 && (
             <div className="text-center py-20">
               <Search className="w-12 h-12 text-gray-700 mx-auto mb-4" />
-              <h3 className="text-xl font-serif text-gray-400 mb-2">No phrases found</h3>
-              <p className="text-gray-600">Try adjusting your search or category filter</p>
+               <h3 className="text-xl font-serif text-gray-400 mb-2">{isFr ? 'Aucune phrase trouvee' : 'No phrases found'}</h3>
+               <p className="text-gray-600">{isFr ? 'Essayez de modifier la recherche ou le filtre' : 'Try adjusting your search or category filter'}</p>
             </div>
           )}
         </div>
@@ -279,9 +289,9 @@ const CareerHelp = () => {
       <section className="py-20 border-t border-gray-800">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <h2 className="text-3xl sm:text-4xl font-serif mb-12">
-            Tips for speaking
+            {isFr ? 'Conseils pour parler' : 'Tips for speaking'}
             <br />
-            <span className="serif-italic text-gray-400">French</span>
+            <span className="serif-italic text-gray-400">{isFr ? 'francais' : 'French'}</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[

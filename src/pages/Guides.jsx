@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { CheckCircle2, Circle, FileText, Plane, Home, CreditCard, MapPin, Book, Download } from 'lucide-react';
 
 const Guides = () => {
+  const { i18n } = useTranslation();
+  const isFr = i18n.language === 'fr';
   const [activeStep, setActiveStep] = useState(0);
 
   const timeline = [
     {
-      month: '12-18 months before',
-      title: 'Research & University Selection',
+      month: isFr ? '12-18 mois avant' : '12-18 months before',
+      title: isFr ? 'Recherche et choix d universite' : 'Research & University Selection',
       icon: Book,
       tasks: [
         'Research French universities and programs',
@@ -16,11 +19,11 @@ const Guides = () => {
         'Prepare for language tests (DELF/DALF or IELTS/TOEFL)',
         'Calculate budget including tuition and living costs'
       ],
-      tips: 'Start early! Top universities have deadlines as early as January for September intake.'
+      tips: isFr ? 'Commencez tot : les meilleures universites ferment parfois des janvier.' : 'Start early! Top universities have deadlines as early as January for September intake.'
     },
     {
-      month: '10-12 months before',
-      title: 'Application Preparation',
+      month: isFr ? '10-12 mois avant' : '10-12 months before',
+      title: isFr ? 'Preparation des candidatures' : 'Application Preparation',
       icon: FileText,
       tasks: [
         'Gather academic transcripts and certificates',
@@ -29,11 +32,11 @@ const Guides = () => {
         'Take required language proficiency tests',
         'Submit applications through university portals'
       ],
-      tips: 'Keep digital and physical copies of all documents. Get transcripts attested if required.'
+      tips: isFr ? 'Conservez des copies numeriques et papier de tous les documents.' : 'Keep digital and physical copies of all documents. Get transcripts attested if required.'
     },
     {
-      month: '8-10 months before',
-      title: 'Campus France Registration',
+      month: isFr ? '8-10 mois avant' : '8-10 months before',
+      title: isFr ? 'Inscription Campus France' : 'Campus France Registration',
       icon: CheckCircle2,
       tasks: [
         'Create account on Campus France website',
@@ -43,11 +46,11 @@ const Guides = () => {
         'Attend Campus France interview',
         'Receive acceptance letter from university'
       ],
-      tips: 'Campus France interview focuses on your motivation and plans. Be honest and prepared!'
+      tips: isFr ? 'L entretien Campus France porte sur votre motivation et votre projet. Soyez clair et prepare.' : 'Campus France interview focuses on your motivation and plans. Be honest and prepared!'
     },
     {
-      month: '6-8 months before',
-      title: 'Student Visa Application',
+      month: isFr ? '6-8 mois avant' : '6-8 months before',
+      title: isFr ? 'Demande de visa etudiant' : 'Student Visa Application',
       icon: Plane,
       tasks: [
         'Receive Campus France approval',
@@ -58,11 +61,11 @@ const Guides = () => {
         'Submit documents at VFS center',
         'Attend visa interview if required'
       ],
-      tips: 'Visa processing takes 2-4 weeks. Apply early to avoid last-minute stress!'
+      tips: isFr ? 'Le visa peut prendre 2 a 4 semaines. Deposez tot pour eviter le stress.' : 'Visa processing takes 2-4 weeks. Apply early to avoid last-minute stress!'
     },
     {
-      month: '3-6 months before',
-      title: 'Accommodation & Travel',
+      month: isFr ? '3-6 mois avant' : '3-6 months before',
+      title: isFr ? 'Logement et voyage' : 'Accommodation & Travel',
       icon: Home,
       tasks: [
         'Apply for CROUS housing (student residences)',
@@ -72,11 +75,11 @@ const Guides = () => {
         'Pack essentials (check baggage limits)',
         'Inform your university of arrival date'
       ],
-      tips: 'CROUS is cheapest but fills fast. Private accommodation: avoid paying large deposits before viewing!'
+      tips: isFr ? 'Le CROUS est souvent le moins cher mais se remplit vite.' : 'CROUS is cheapest but fills fast. Private accommodation: avoid paying large deposits before viewing!'
     },
     {
-      month: '1-3 months before',
-      title: 'Pre-Departure Preparation',
+      month: isFr ? '1-3 mois avant' : '1-3 months before',
+      title: isFr ? 'Preparation avant depart' : 'Pre-Departure Preparation',
       icon: CreditCard,
       tasks: [
         'Open a forex card or get some Euros',
@@ -86,11 +89,11 @@ const Guides = () => {
         'Learn basic French phrases',
         'Join Facebook groups of your university'
       ],
-      tips: 'Connect with seniors from your university - they can help you settle in!'
+      tips: isFr ? 'Echangez avec des etudiants deja sur place : leurs conseils valent de l or.' : 'Connect with seniors from your university - they can help you settle in!'
     },
     {
-      month: 'After Arrival',
-      title: 'First Steps in France',
+      month: isFr ? 'Apres arrivee' : 'After Arrival',
+      title: isFr ? 'Premiers pas en France' : 'First Steps in France',
       icon: MapPin,
       tasks: [
         'Validate your visa at OFII (within 3 months)',
@@ -101,7 +104,7 @@ const Guides = () => {
         'Register for French healthcare (CPAM)',
         'Get carte de séjour from prefecture'
       ],
-      tips: 'CAF can reduce rent by 30-50%! Apply as soon as you have a lease agreement.'
+      tips: isFr ? 'La CAF peut reduire le loyer de 30 a 50 %. Demandez-la des que possible.' : 'CAF can reduce rent by 30-50%! Apply as soon as you have a lease agreement.'
     }
   ];
 
@@ -118,7 +121,7 @@ const Guides = () => {
               className="text-5xl md:text-6xl font-serif font-bold mb-6"
             >
               <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-blue-400 bg-clip-text text-transparent">
-                Your Step-by-Step Journey
+                {isFr ? 'Votre parcours etape par etape' : 'Your Step-by-Step Journey'}
               </span>
             </motion.h1>
             <motion.p 
@@ -127,7 +130,7 @@ const Guides = () => {
               transition={{ delay: 0.1 }}
               className="text-xl text-gray-400 max-w-2xl mx-auto"
             >
-              From application to arrival - everything you need to know
+              {isFr ? 'De la candidature a l arrivee : tout ce qu il faut savoir' : 'From application to arrival - everything you need to know'}
             </motion.p>
           </div>
         </div>
@@ -211,7 +214,7 @@ const Guides = () => {
 
                           <div className="bg-yellow-500/10 border-l-4 border-yellow-500 p-3 rounded-r">
                             <p className="text-sm text-yellow-200">
-                              <span className="font-semibold">Pro Tip:</span> {step.tips}
+                              <span className="font-semibold">{isFr ? 'Conseil :' : 'Pro Tip:'}</span> {step.tips}
                             </p>
                           </div>
                         </motion.div>
@@ -219,7 +222,7 @@ const Guides = () => {
 
                       {!isActive && (
                         <button className="text-purple-400 text-sm font-semibold hover:text-purple-300 transition-colors">
-                          Click to expand →
+                          {isFr ? 'Cliquer pour ouvrir →' : 'Click to expand →'}
                         </button>
                       )}
                     </motion.div>
@@ -241,7 +244,7 @@ const Guides = () => {
             <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
               <span className="text-2xl">📚</span>
             </div>
-            <h3 className="text-xl font-serif font-bold mb-3 text-white">Useful Resources</h3>
+            <h3 className="text-xl font-serif font-bold mb-3 text-white">{isFr ? 'Ressources utiles' : 'Useful Resources'}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li className="hover:text-purple-400 transition-colors cursor-pointer">• Campus France Official Website</li>
               <li className="hover:text-purple-400 transition-colors cursor-pointer">• VFS France Visa Information</li>
@@ -260,7 +263,7 @@ const Guides = () => {
             <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
               <span className="text-2xl">💰</span>
             </div>
-            <h3 className="text-xl font-serif font-bold mb-3 text-white">Cost Breakdown</h3>
+            <h3 className="text-xl font-serif font-bold mb-3 text-white">{isFr ? 'Budget indicatif' : 'Cost Breakdown'}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>• Tuition: <span className="text-purple-400">€2,500 - €15,000</span>/year</li>
               <li>• Rent: <span className="text-purple-400">€300 - €800</span>/month</li>
@@ -279,7 +282,7 @@ const Guides = () => {
             <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
               <span className="text-2xl">⏰</span>
             </div>
-            <h3 className="text-xl font-serif font-bold mb-3 text-white">Key Deadlines</h3>
+            <h3 className="text-xl font-serif font-bold mb-3 text-white">{isFr ? 'Dates importantes' : 'Key Deadlines'}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>• Applications: <span className="text-blue-400">Jan - Apr</span></li>
               <li>• Campus France: <span className="text-blue-400">Feb - May</span></li>
@@ -299,13 +302,13 @@ const Guides = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600"></div>
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,...')] opacity-10"></div>
           <div className="relative p-8 md:p-12 text-white text-center">
-            <h2 className="text-2xl md:text-3xl font-serif font-bold mb-3">Want a printable checklist?</h2>
+            <h2 className="text-2xl md:text-3xl font-serif font-bold mb-3">{isFr ? 'Besoin d une checklist imprimable ?' : 'Want a printable checklist?'}</h2>
             <p className="mb-6 text-purple-100 max-w-2xl mx-auto">
-              Download our comprehensive PDF guide with all steps and document requirements
+              {isFr ? 'Telechargez notre guide PDF complet avec les etapes et les documents requis' : 'Download our comprehensive PDF guide with all steps and document requirements'}
             </p>
             <button className="inline-flex items-center bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-white/25 transition-all transform hover:-translate-y-1">
               <Download className="w-5 h-5 mr-2" />
-              Download PDF Guide
+              {isFr ? 'Telecharger le guide PDF' : 'Download PDF Guide'}
             </button>
           </div>
         </motion.div>

@@ -20,7 +20,30 @@ const Jobs = () => {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Hospitality', 'Delivery', 'Campus Jobs', 'Tutoring', 'Retail', 'Childcare', 'Administrative', 'Events', 'Tech', 'Creative', 'Digital', 'Sports & Fitness', 'Tourism', 'Pet Care'];
+  const categories = [
+    { value: 'All', key: 'jobs.category.all' },
+    { value: 'Hospitality', key: 'jobs.category.hospitality' },
+    { value: 'Delivery', key: 'jobs.category.delivery' },
+    { value: 'Campus Jobs', key: 'jobs.category.campus' },
+    { value: 'Tutoring', key: 'jobs.category.tutoring' },
+    { value: 'Retail', key: 'jobs.category.retail' },
+    { value: 'Childcare', key: 'jobs.category.childcare' },
+    { value: 'Administrative', key: 'jobs.category.admin' },
+    { value: 'Events', key: 'jobs.category.events' },
+    { value: 'Tech', key: 'jobs.category.tech' },
+    { value: 'Creative', key: 'jobs.category.creative' },
+    { value: 'Digital', key: 'jobs.category.digital' },
+    { value: 'Sports & Fitness', key: 'jobs.category.sports' },
+    { value: 'Tourism', key: 'jobs.category.tourism' },
+    { value: 'Pet Care', key: 'jobs.category.pet' }
+  ];
+
+  const tips = [
+    { titleKey: 'jobs.tip.startEarly.title', descKey: 'jobs.tip.startEarly.desc' },
+    { titleKey: 'jobs.tip.prepareDocs.title', descKey: 'jobs.tip.prepareDocs.desc' },
+    { titleKey: 'jobs.tip.practiceFrench.title', descKey: 'jobs.tip.practiceFrench.desc' },
+    { titleKey: 'jobs.tip.usePlatforms.title', descKey: 'jobs.tip.usePlatforms.desc' }
+  ];
 
   const filteredJobs = selectedCategory === 'All' 
     ? jobsData 
@@ -43,18 +66,18 @@ const Jobs = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Opportunities</p>
+            <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">{t('jobs.eyebrow')}</p>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif mb-6">
-              Part-time
+              {t('jobs.titlePrefix')}
               <br />
-              <span className="serif-italic text-gray-400">jobs for students</span>
+              <span className="serif-italic text-gray-400">{t('jobs.titleAccent')}</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-xl mb-6">
               {t('jobs.subtitle')}
             </p>
             <div className="inline-flex items-center gap-3 px-5 py-3 rounded-lg border border-gray-800 bg-gray-900/50">
-              <span className="text-gray-400 text-sm">Legal working hours:</span>
-              <span className="text-white font-medium">964 hours/year (~20 hrs/week)</span>
+              <span className="text-gray-400 text-sm">{t('jobs.legalHoursLabel')}</span>
+              <span className="text-white font-medium">{t('jobs.legalHoursValue')}</span>
             </div>
           </motion.div>
         </div>
@@ -63,19 +86,19 @@ const Jobs = () => {
       {/* Category Filter */}
       <section className="pb-8">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Filter by category</p>
+          <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">{t('jobs.filterTitle')}</p>
           <div className="flex flex-wrap gap-2">
             {categories.map(category => (
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
+                key={category.value}
+                onClick={() => setSelectedCategory(category.value)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === category
+                  selectedCategory === category.value
                     ? 'bg-white text-black'
                     : 'bg-transparent border border-gray-700 text-gray-400 hover:border-gray-500 hover:text-white'
                 }`}
               >
-                {category}
+                {t(category.key)}
               </button>
             ))}
           </div>
@@ -110,9 +133,9 @@ const Jobs = () => {
 
                   {/* Title & Category */}
                   <h3 className="text-xl font-serif text-white mb-2">{job.title}</h3>
-                  <span className="inline-block text-xs tracking-wider uppercase text-gray-500 mb-4">
-                    {job.category}
-                  </span>
+                    <span className="inline-block text-xs tracking-wider uppercase text-gray-500 mb-4">
+                      {job.category}
+                    </span>
 
                   {/* Description */}
                   <p className="text-gray-500 text-sm mb-6 line-clamp-3">{job.description}</p>
@@ -128,14 +151,14 @@ const Jobs = () => {
                       <span className="text-gray-400">{job.frenchLevel}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">In INR</span>
+                      <span className="text-gray-600">{t('jobs.inInr')}</span>
                       <span className="text-green-400">₹{job.avgPayInr}/hr</span>
                     </div>
                   </div>
 
                   {/* Requirements */}
                   <div className="mb-6">
-                    <p className="text-xs tracking-wider uppercase text-gray-600 mb-2">Requirements</p>
+                    <p className="text-xs tracking-wider uppercase text-gray-600 mb-2">{t('jobs.requirements')}</p>
                     <div className="flex flex-wrap gap-1">
                       {job.requirements.slice(0, 2).map((req, idx) => (
                         <span key={idx} className="bg-gray-800 text-gray-400 px-2 py-1 rounded text-xs">
@@ -147,7 +170,7 @@ const Jobs = () => {
 
                   {/* How to Apply */}
                   <div className="border-l-2 border-gray-700 pl-4 py-2">
-                    <p className="text-xs tracking-wider uppercase text-gray-600 mb-1">How to Apply</p>
+                    <p className="text-xs tracking-wider uppercase text-gray-600 mb-1">{t('jobs.howToApply')}</p>
                     <p className="text-gray-400 text-xs">{job.howToApply}</p>
                   </div>
 
@@ -164,7 +187,7 @@ const Jobs = () => {
           {/* No Results */}
           {filteredJobs.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">No jobs found in this category.</p>
+              <p className="text-gray-500 text-lg">{t('jobs.noResults')}</p>
             </div>
           )}
         </div>
@@ -180,20 +203,15 @@ const Jobs = () => {
             }}
           >
             <h2 className="text-3xl sm:text-4xl font-serif mb-8">
-              Job search
+              {t('jobs.tipsTitle')}
               <br />
-              <span className="serif-italic text-gray-400">tips for students</span>
+              <span className="serif-italic text-gray-400">{t('jobs.tipsAccent')}</span>
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { title: 'Start Early', desc: 'Begin your job search as soon as you arrive. Popular positions fill quickly in September!' },
-                { title: 'Prepare Documents', desc: 'Always carry your student ID, residence permit, and a French CV.' },
-                { title: 'Practice French', desc: 'Even basic French dramatically increases your chances. Focus on customer service phrases!' },
-                { title: 'Use Multiple Platforms', desc: 'Check Indeed France, LeBonCoin, university job boards, and LinkedIn regularly.' },
-              ].map((tip, i) => (
+              {tips.map((tip, i) => (
                 <div key={i} className="space-y-2">
-                  <h3 className="text-white font-medium">{tip.title}</h3>
-                  <p className="text-gray-400 text-sm">{tip.desc}</p>
+                  <h3 className="text-white font-medium">{t(tip.titleKey)}</h3>
+                  <p className="text-gray-400 text-sm">{t(tip.descKey)}</p>
                 </div>
               ))}
             </div>

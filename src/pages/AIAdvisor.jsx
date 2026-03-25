@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
   Send, Loader2, Sparkles, Bot, User, Trash2, 
   MessageSquare, GraduationCap, Plane, Home, Briefcase,
@@ -9,10 +10,25 @@ import { Link } from 'react-router-dom';
 import { chatWithAI } from '../utils/openai';
 
 const AIAdvisor = () => {
+  const { i18n } = useTranslation();
+  const isFr = i18n.language === 'fr';
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: `Bonjour! I'm your personal AI advisor for studying in France. 
+      content: isFr ? `Bonjour ! Je suis votre conseiller IA personnel pour etudier en France.
+
+Je suis la pour vous aider a chaque etape : choix d universite, visa, logement, budget et vie etudiante.
+
+**Je peux vous aider sur :**
+- Selection des universites et candidatures
+- Processus de visa et documents
+- Cout de la vie et budget
+- Recherche de logement
+- Emplois a temps partiel
+- Culture francaise et conseils de langue
+- Vie etudiante selon les villes
+
+Posez-moi vos questions en detail, je vous reponds pas a pas.` : `Bonjour! I'm your personal AI advisor for studying in France. 
 
 I'm here to help you with everything - from choosing the right university to settling into French life. Think of me as your experienced friend who's been through it all.
 
@@ -35,14 +51,23 @@ Feel free to ask me anything in detail - I'm here to have a real conversation wi
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  const quickTopics = [
-    { icon: GraduationCap, label: 'University Selection', prompt: 'I need help choosing the right university in France. Can you ask me about my profile and preferences to give personalized recommendations?' },
-    { icon: Plane, label: 'Visa Process', prompt: 'Can you guide me through the complete French student visa process step by step? What documents do I need and what are the timelines?' },
-    { icon: Home, label: 'Accommodation', prompt: 'I\'m worried about finding accommodation in France. Can you explain all my options - CROUS, private rentals, shared apartments - and help me understand what\'s best for my budget?' },
-    { icon: Briefcase, label: 'Part-time Jobs', prompt: 'Can I work while studying in France? Tell me about the rules, what kind of jobs are available for international students, and how to find them.' },
-    { icon: Heart, label: 'Student Life', prompt: 'What\'s student life really like in France? Tell me about the culture, making friends, social activities, and how to adapt as an Indian student.' },
-    { icon: BookOpen, label: 'French Language', prompt: 'I\'m worried about the language barrier. How much French do I really need? Can you give me a realistic plan to learn French before and after arriving?' },
-  ];
+  const quickTopics = isFr
+    ? [
+        { icon: GraduationCap, label: 'Choix d universite', prompt: 'Aide-moi a choisir la bonne universite en France selon mon profil.' },
+        { icon: Plane, label: 'Processus visa', prompt: 'Explique-moi le processus complet du visa etudiant France et les documents necessaires.' },
+        { icon: Home, label: 'Logement', prompt: 'Quelles sont mes options de logement en France (CROUS, prive, colocation) selon mon budget ?' },
+        { icon: Briefcase, label: 'Emplois etudiants', prompt: 'Puis-je travailler pendant mes etudes en France ? Quelles regles et quels types d emplois ?' },
+        { icon: Heart, label: 'Vie etudiante', prompt: 'Comment est la vie etudiante en France pour un etudiant indien ?' },
+        { icon: BookOpen, label: 'Langue francaise', prompt: 'Quel niveau de francais faut-il vraiment et comment progresser avant/apres arrivee ?' },
+      ]
+    : [
+        { icon: GraduationCap, label: 'University Selection', prompt: 'I need help choosing the right university in France. Can you ask me about my profile and preferences to give personalized recommendations?' },
+        { icon: Plane, label: 'Visa Process', prompt: 'Can you guide me through the complete French student visa process step by step? What documents do I need and what are the timelines?' },
+        { icon: Home, label: 'Accommodation', prompt: 'I\'m worried about finding accommodation in France. Can you explain all my options - CROUS, private rentals, shared apartments - and help me understand what\'s best for my budget?' },
+        { icon: Briefcase, label: 'Part-time Jobs', prompt: 'Can I work while studying in France? Tell me about the rules, what kind of jobs are available for international students, and how to find them.' },
+        { icon: Heart, label: 'Student Life', prompt: 'What\'s student life really like in France? Tell me about the culture, making friends, social activities, and how to adapt as an Indian student.' },
+        { icon: BookOpen, label: 'French Language', prompt: 'I\'m worried about the language barrier. How much French do I really need? Can you give me a realistic plan to learn French before and after arriving?' },
+      ];
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -81,7 +106,9 @@ Feel free to ask me anything in detail - I'm here to have a real conversation wi
       setIsTyping(false);
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'I apologize, but I encountered an error. Please make sure the OpenAI API key is configured correctly. In the meantime, feel free to explore other resources on our site or try again later.',
+        content: isFr
+          ? 'Desole, une erreur est survenue. Verifiez la configuration de la cle API OpenAI puis reessayez.'
+          : 'I apologize, but I encountered an error. Please make sure the OpenAI API key is configured correctly. In the meantime, feel free to explore other resources on our site or try again later.',
         timestamp: new Date()
       }]);
     }
@@ -90,9 +117,13 @@ Feel free to ask me anything in detail - I'm here to have a real conversation wi
   };
 
   const clearChat = () => {
-    setMessages([{
+      setMessages([{
       role: 'assistant',
-      content: `Chat cleared! Let's start fresh. 
+      content: isFr
+        ? `Discussion reinitialisee. Reprenons.
+
+Que voulez-vous savoir sur les etudes en France ?`
+        : `Chat cleared! Let's start fresh. 
 
 What would you like to know about studying in France? I'm here to help with universities, visas, accommodation, student life, and more.`,
       timestamp: new Date()
@@ -152,19 +183,19 @@ What would you like to know about studying in France? I'm here to help with univ
               <ArrowLeft className="w-5 h-5 text-gray-400" />
             </Link>
             <div>
-              <h1 className="text-2xl font-serif font-bold text-white flex items-center gap-2">
-                <Sparkles className="w-6 h-6 text-purple-400" />
-                AI Study Advisor
-              </h1>
-              <p className="text-gray-400 text-sm">Your personal guide to studying in France</p>
+                <h1 className="text-2xl font-serif font-bold text-white flex items-center gap-2">
+                  <Sparkles className="w-6 h-6 text-purple-400" />
+                  {isFr ? 'Conseiller IA Etudes' : 'AI Study Advisor'}
+                </h1>
+                <p className="text-gray-400 text-sm">{isFr ? 'Votre guide personnel pour etudier en France' : 'Your personal guide to studying in France'}</p>
+              </div>
             </div>
-          </div>
           <button
             onClick={clearChat}
             className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-red-500/20 text-gray-400 hover:text-red-400 transition-all border border-white/10 hover:border-red-500/30"
           >
             <Trash2 className="w-4 h-4" />
-            <span className="hidden sm:inline">Clear Chat</span>
+            <span className="hidden sm:inline">{isFr ? 'Effacer le chat' : 'Clear Chat'}</span>
           </button>
         </div>
 
@@ -174,7 +205,7 @@ What would you like to know about studying in France? I'm here to help with univ
             <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-4 sticky top-24">
               <h3 className="text-sm font-semibold text-gray-400 mb-4 flex items-center gap-2">
                 <MessageSquare className="w-4 h-4" />
-                Quick Topics
+                {isFr ? 'Sujets rapides' : 'Quick Topics'}
               </h3>
               <div className="space-y-2">
                 {quickTopics.map((topic, idx) => (
@@ -194,10 +225,10 @@ What would you like to know about studying in France? I'm here to help with univ
               <div className="mt-6 p-4 rounded-lg bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20">
                 <h4 className="text-sm font-semibold text-purple-300 mb-2">Tips for better answers</h4>
                 <ul className="text-xs text-gray-400 space-y-1">
-                  <li>• Be specific about your situation</li>
-                  <li>• Mention your field of study</li>
-                  <li>• Share your budget constraints</li>
-                  <li>• Ask follow-up questions</li>
+                  <li>{isFr ? '• Soyez precis sur votre situation' : '• Be specific about your situation'}</li>
+                  <li>{isFr ? '• Mentionnez votre domaine d etudes' : '• Mention your field of study'}</li>
+                  <li>{isFr ? '• Indiquez votre budget' : '• Share your budget constraints'}</li>
+                  <li>{isFr ? '• Posez des questions de suivi' : '• Ask follow-up questions'}</li>
                 </ul>
               </div>
             </div>
@@ -265,7 +296,7 @@ What would you like to know about studying in France? I'm here to help with univ
                           <span className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
                           <span className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
                         </div>
-                        <span className="text-sm text-gray-400">Thinking...</span>
+                        <span className="text-sm text-gray-400">{isFr ? 'Reflexion...' : 'Thinking...'}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -288,7 +319,7 @@ What would you like to know about studying in France? I'm here to help with univ
                           handleSend();
                         }
                       }}
-                      placeholder="Type your message... (Press Enter to send, Shift+Enter for new line)"
+                      placeholder={isFr ? 'Ecrivez votre message... (Entree pour envoyer)' : 'Type your message... (Press Enter to send, Shift+Enter for new line)'}
                       rows={1}
                       className="w-full p-4 pr-12 bg-white/5 border border-white/20 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none min-h-[56px] max-h-[200px]"
                       style={{ height: 'auto' }}
@@ -311,7 +342,9 @@ What would you like to know about studying in France? I'm here to help with univ
                   </button>
                 </div>
                 <p className="text-xs text-gray-500 mt-2 text-center">
-                  AI responses are generated and may not always be accurate. Verify important information.
+                  {isFr
+                    ? 'Les reponses IA sont generees automatiquement et peuvent contenir des erreurs. Verifiez les informations importantes.'
+                    : 'AI responses are generated and may not always be accurate. Verify important information.'}
                 </p>
               </div>
             </div>

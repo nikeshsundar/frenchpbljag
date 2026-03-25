@@ -87,7 +87,70 @@ const resources = {
       "common.error": "Something went wrong",
       "common.learnMore": "Learn More",
       "common.apply": "Apply Now",
-      "common.contact": "Contact"
+      "common.contact": "Contact",
+      "common.getStarted": "Get Started",
+      "common.back": "Back",
+      "common.nextStep": "Next Step",
+      "common.tryAgain": "Try Again",
+
+      // University Search Page
+      "universitySearch.eyebrow": "Explore",
+      "universitySearch.titlePrefix": "Find your",
+      "universitySearch.titleAccent": "perfect university",
+      "universitySearch.description": "Search through top French universities. Filter by location, program, tuition, and find the perfect fit for your academic journey.",
+
+      // University Finder extra
+      "finder.subtitle": "Answer a few questions and let AI find your perfect match",
+      "finder.selectCourse": "Select a course...",
+      "finder.cityOptional": "{{city}} (Optional)",
+      "finder.otherPreferences": "Other Preferences (Optional)",
+      "finder.cityPlaceholder": "e.g., Paris, Lyon, Toulouse...",
+      "finder.preferencesPlaceholder": "e.g., Looking for research opportunities, prefer English-taught programs...",
+      "finder.analyzing": "Analyzing...",
+      "finder.resultsCount": "{{count}} universities found",
+      "finder.searchAgain": "Search Again",
+      "finder.visitWebsite": "Visit Website",
+      "finder.noResultsTitle": "No universities found",
+      "finder.noResultsDescription": "Try adjusting your CGPA, budget, or course selection to see more results.",
+
+      // Jobs page extra
+      "jobs.eyebrow": "Opportunities",
+      "jobs.titlePrefix": "Part-time",
+      "jobs.titleAccent": "jobs for students",
+      "jobs.legalHoursLabel": "Legal working hours:",
+      "jobs.legalHoursValue": "964 hours/year (~20 hrs/week)",
+      "jobs.filterTitle": "Filter by category",
+      "jobs.inInr": "In INR",
+      "jobs.requirements": "Requirements",
+      "jobs.howToApply": "How to Apply",
+      "jobs.noResults": "No jobs found in this category.",
+      "jobs.tipsTitle": "Job search",
+      "jobs.tipsAccent": "tips for students",
+      "jobs.tip.startEarly.title": "Start Early",
+      "jobs.tip.startEarly.desc": "Begin your job search as soon as you arrive. Popular positions fill quickly in September!",
+      "jobs.tip.prepareDocs.title": "Prepare Documents",
+      "jobs.tip.prepareDocs.desc": "Always carry your student ID, residence permit, and a French CV.",
+      "jobs.tip.practiceFrench.title": "Practice French",
+      "jobs.tip.practiceFrench.desc": "Even basic French dramatically increases your chances. Focus on customer service phrases!",
+      "jobs.tip.usePlatforms.title": "Use Multiple Platforms",
+      "jobs.tip.usePlatforms.desc": "Check Indeed France, LeBonCoin, university job boards, and LinkedIn regularly.",
+
+      // Job categories
+      "jobs.category.all": "All",
+      "jobs.category.hospitality": "Hospitality",
+      "jobs.category.delivery": "Delivery",
+      "jobs.category.campus": "Campus Jobs",
+      "jobs.category.tutoring": "Tutoring",
+      "jobs.category.retail": "Retail",
+      "jobs.category.childcare": "Childcare",
+      "jobs.category.admin": "Administrative",
+      "jobs.category.events": "Events",
+      "jobs.category.tech": "Tech",
+      "jobs.category.creative": "Creative",
+      "jobs.category.digital": "Digital",
+      "jobs.category.sports": "Sports & Fitness",
+      "jobs.category.tourism": "Tourism",
+      "jobs.category.pet": "Pet Care"
     }
   },
   fr: {
@@ -175,7 +238,70 @@ const resources = {
       "common.error": "Quelque chose s'est mal passé",
       "common.learnMore": "En Savoir Plus",
       "common.apply": "Postuler Maintenant",
-      "common.contact": "Contact"
+      "common.contact": "Contact",
+      "common.getStarted": "Commencer",
+      "common.back": "Retour",
+      "common.nextStep": "Étape suivante",
+      "common.tryAgain": "Réessayer",
+
+      // University Search Page
+      "universitySearch.eyebrow": "Explorer",
+      "universitySearch.titlePrefix": "Trouvez votre",
+      "universitySearch.titleAccent": "université idéale",
+      "universitySearch.description": "Recherchez parmi les meilleures universités françaises. Filtrez par lieu, programme et frais pour trouver la meilleure option pour votre parcours académique.",
+
+      // University Finder extra
+      "finder.subtitle": "Répondez à quelques questions et laissez l'IA trouver votre correspondance idéale",
+      "finder.selectCourse": "Sélectionnez un cours...",
+      "finder.cityOptional": "{{city}} (Optionnel)",
+      "finder.otherPreferences": "Autres préférences (Optionnel)",
+      "finder.cityPlaceholder": "ex. : Paris, Lyon, Toulouse...",
+      "finder.preferencesPlaceholder": "ex. : Je recherche des opportunités de recherche, je préfère les programmes en anglais...",
+      "finder.analyzing": "Analyse en cours...",
+      "finder.resultsCount": "{{count}} universités trouvées",
+      "finder.searchAgain": "Relancer la recherche",
+      "finder.visitWebsite": "Visiter le site",
+      "finder.noResultsTitle": "Aucune université trouvée",
+      "finder.noResultsDescription": "Essayez d'ajuster votre CGPA, votre budget ou votre choix de cours pour voir plus de résultats.",
+
+      // Jobs page extra
+      "jobs.eyebrow": "Opportunités",
+      "jobs.titlePrefix": "Emplois",
+      "jobs.titleAccent": "étudiants à temps partiel",
+      "jobs.legalHoursLabel": "Heures légales de travail :",
+      "jobs.legalHoursValue": "964 heures/an (~20 h/semaine)",
+      "jobs.filterTitle": "Filtrer par catégorie",
+      "jobs.inInr": "En INR",
+      "jobs.requirements": "Exigences",
+      "jobs.howToApply": "Comment postuler",
+      "jobs.noResults": "Aucun emploi trouvé dans cette catégorie.",
+      "jobs.tipsTitle": "Recherche d'emploi",
+      "jobs.tipsAccent": "conseils pour étudiants",
+      "jobs.tip.startEarly.title": "Commencez tôt",
+      "jobs.tip.startEarly.desc": "Commencez votre recherche d'emploi dès votre arrivée. Les postes populaires se remplissent vite en septembre !",
+      "jobs.tip.prepareDocs.title": "Préparez vos documents",
+      "jobs.tip.prepareDocs.desc": "Ayez toujours votre carte étudiante, votre titre de séjour et un CV en français.",
+      "jobs.tip.practiceFrench.title": "Pratiquez le français",
+      "jobs.tip.practiceFrench.desc": "Même un français de base augmente fortement vos chances. Concentrez-vous sur les phrases de service client !",
+      "jobs.tip.usePlatforms.title": "Utilisez plusieurs plateformes",
+      "jobs.tip.usePlatforms.desc": "Consultez régulièrement Indeed France, LeBonCoin, les plateformes universitaires et LinkedIn.",
+
+      // Job categories
+      "jobs.category.all": "Tous",
+      "jobs.category.hospitality": "Restauration",
+      "jobs.category.delivery": "Livraison",
+      "jobs.category.campus": "Emplois campus",
+      "jobs.category.tutoring": "Tutorat",
+      "jobs.category.retail": "Commerce",
+      "jobs.category.childcare": "Garde d'enfants",
+      "jobs.category.admin": "Administratif",
+      "jobs.category.events": "Événementiel",
+      "jobs.category.tech": "Tech",
+      "jobs.category.creative": "Créatif",
+      "jobs.category.digital": "Digital",
+      "jobs.category.sports": "Sport & Fitness",
+      "jobs.category.tourism": "Tourisme",
+      "jobs.category.pet": "Garde d'animaux"
     }
   }
 };
@@ -184,11 +310,24 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en',
+    lng: (typeof window !== 'undefined' && localStorage.getItem('studybridge_lang')) || 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     }
   });
+
+if (typeof document !== 'undefined') {
+  document.documentElement.lang = i18n.language;
+}
+
+i18n.on('languageChanged', (lng) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('studybridge_lang', lng);
+  }
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = lng;
+  }
+});
 
 export default i18n;

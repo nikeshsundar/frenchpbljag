@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import UniversityFinder from '../components/UniversityFinder';
 
 const UniversitySearch = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-[#0a0a0a] min-h-screen pt-24">
       {/* Hero Section */}
@@ -21,14 +22,14 @@ const UniversitySearch = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Explore</p>
+            <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">{t('universitySearch.eyebrow')}</p>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif mb-6">
-              Find your
+              {t('universitySearch.titlePrefix')}
               <br />
-              <span className="serif-italic text-gray-400">perfect university</span>
+              <span className="serif-italic text-gray-400">{t('universitySearch.titleAccent')}</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-xl mb-8">
-              Search through 500+ French universities. Filter by location, program, tuition, and find the perfect fit for your academic journey.
+              {t('universitySearch.description')}
             </p>
           </motion.div>
         </div>

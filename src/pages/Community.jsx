@@ -6,7 +6,8 @@ import studentsData from '../data/students.json';
 import forumData from '../data/forum.json';
 
 const Community = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isFr = i18n.language === 'fr';
   const [selectedThread, setSelectedThread] = useState(null);
   const [replyText, setReplyText] = useState('');
   const [newThreadOpen, setNewThreadOpen] = useState(false);
@@ -35,6 +36,14 @@ const Community = () => {
     'Housing': 'bg-blue-500/20 text-blue-300 border-blue-500/30',
     'Student Life': 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
     'Jobs': 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30'
+  };
+
+  const categoryLabels = {
+    Admissions: isFr ? 'Admissions' : 'Admissions',
+    Visa: isFr ? 'Visa' : 'Visa',
+    Housing: isFr ? 'Logement' : 'Housing',
+    'Student Life': isFr ? 'Vie etudiante' : 'Student Life',
+    Jobs: isFr ? 'Emplois' : 'Jobs'
   };
 
   const handleAddReply = (threadId) => {
@@ -93,7 +102,7 @@ const Community = () => {
               transition={{ delay: 0.1 }}
               className="text-xl text-gray-400 max-w-2xl mx-auto"
             >
-              Learn from students already living their French dream
+              {isFr ? 'Apprenez des etudiants qui vivent deja leur reve francais' : 'Learn from students already living their French dream'}
             </motion.p>
           </div>
         </div>
@@ -157,7 +166,7 @@ const Community = () => {
                         className="flex-1 flex items-center justify-center bg-white/10 text-white py-2 rounded-lg hover:bg-white/20 transition-all text-sm border border-white/20"
                       >
                         <Mail className="w-4 h-4 mr-1" />
-                        Email
+                        {isFr ? 'E-mail' : 'Email'}
                       </a>
                     </div>
                   </div>
@@ -178,7 +187,7 @@ const Community = () => {
               onClick={() => setNewThreadOpen(true)}
               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all shadow-lg font-semibold"
             >
-              + New Discussion
+              {isFr ? '+ Nouvelle discussion' : '+ New Discussion'}
             </button>
           </div>
 
@@ -195,7 +204,7 @@ const Community = () => {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${categoryColors[thread.category] || 'bg-gray-500/20 text-gray-300 border-gray-500/30'}`}>
-                          {thread.category}
+                          {categoryLabels[thread.category] || thread.category}
                         </span>
                         <span className="text-xs text-gray-500">{thread.date}</span>
                       </div>
@@ -228,9 +237,9 @@ const Community = () => {
                     </button>
                     <div className="flex items-center">
                       <MessageCircle className="w-4 h-4 mr-1" />
-                      {thread.replies} replies
+                      {thread.replies} {isFr ? 'reponses' : 'replies'}
                     </div>
-                    <span className="text-xs">by {thread.author}</span>
+                    <span className="text-xs">{isFr ? 'par' : 'by'} {thread.author}</span>
                   </div>
                 </motion.div>
               ))}
@@ -260,10 +269,10 @@ const Community = () => {
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
                       <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white border border-white/30">
-                        {selectedThread.category}
+                        {categoryLabels[selectedThread.category] || selectedThread.category}
                       </span>
                       <h2 className="text-2xl font-serif font-bold mt-3 mb-2">{selectedThread.title}</h2>
-                      <p className="text-purple-100 text-sm">by {selectedThread.author} • {selectedThread.date}</p>
+                      <p className="text-purple-100 text-sm">{isFr ? 'par' : 'by'} {selectedThread.author} • {selectedThread.date}</p>
                     </div>
                     <button 
                       onClick={() => setSelectedThread(null)}
@@ -290,7 +299,7 @@ const Community = () => {
 
                   {/* Replies */}
                   <div className="space-y-4 mb-6">
-                    <h3 className="font-semibold text-white text-lg">{threadReplies[selectedThread.id]?.length || 0} Replies</h3>
+                    <h3 className="font-semibold text-white text-lg">{threadReplies[selectedThread.id]?.length || 0} {isFr ? 'Reponses' : 'Replies'}</h3>
                     {threadReplies[selectedThread.id]?.map((reply) => (
                       <motion.div
                         key={reply.id}
@@ -320,11 +329,11 @@ const Community = () => {
 
                   {/* Reply Input */}
                   <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                    <h4 className="font-semibold text-white mb-3">Add Your Reply</h4>
+                    <h4 className="font-semibold text-white mb-3">{isFr ? 'Ajouter votre reponse' : 'Add Your Reply'}</h4>
                     <textarea
                       value={replyText}
                       onChange={(e) => setReplyText(e.target.value)}
-                      placeholder="Share your thoughts, experience, or advice..."
+                      placeholder={isFr ? 'Partagez vos idees, votre experience ou vos conseils...' : 'Share your thoughts, experience, or advice...'}
                       className="w-full bg-white/5 border border-white/20 rounded-lg p-3 text-sm text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none"
                       rows="4"
                     />
@@ -333,7 +342,7 @@ const Community = () => {
                       className="mt-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-lg hover:from-purple-500 hover:to-blue-500 transition-all flex items-center gap-2 font-semibold"
                     >
                       <Send className="w-4 h-4" />
-                      Post Reply
+                      {isFr ? 'Publier la reponse' : 'Post Reply'}
                     </button>
                   </div>
                 </div>
@@ -349,10 +358,10 @@ const Community = () => {
           <div className="relative p-8 md:p-12 text-white text-center">
             <h2 className="text-3xl font-serif font-bold mb-4">Want to share your story?</h2>
             <p className="text-lg mb-6 text-purple-100 max-w-2xl mx-auto">
-              Help future students by sharing your journey and insights about studying in France!
+              {isFr ? 'Aidez les futurs etudiants en partageant votre parcours et vos conseils sur les etudes en France.' : 'Help future students by sharing your journey and insights about studying in France!'}
             </p>
             <button className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-white/25 transition-all transform hover:-translate-y-1">
-              Share Your Story
+              {isFr ? 'Partager votre histoire' : 'Share Your Story'}
             </button>
           </div>
         </div>

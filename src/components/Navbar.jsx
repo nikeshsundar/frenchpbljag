@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Globe, Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 
@@ -12,8 +12,8 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
 
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en');
+  const setLanguage = (lang) => {
+    i18n.changeLanguage(lang);
   };
 
   // Handle scroll
@@ -37,17 +37,17 @@ const Navbar = () => {
   }, []);
 
   const mainLinks = [
-    { path: '/universities', label: 'Universities' },
-    { path: '/jobs', label: 'Jobs' },
-    { path: '/community', label: 'Community' },
-    { path: '/guides', label: 'Guides' },
+    { path: '/universities', label: t('nav.universities') },
+    { path: '/jobs', label: t('nav.jobs') },
+    { path: '/community', label: t('nav.community') },
+    { path: '/guides', label: t('nav.guides') },
   ];
 
   const toolsLinks = [
-    { path: '/career-help', label: 'Career Help' },
-    { path: '/find-friends', label: 'Find Friends' },
-    { path: '/culture-guide', label: 'Culture Guide' },
-    { path: '/day-simulator', label: 'Day Simulator' },
+    { path: '/career-help', label: t('nav.careerHelp') },
+    { path: '/find-friends', label: t('nav.findFriends') },
+    { path: '/culture-guide', label: t('nav.cultureGuide') },
+    { path: '/day-simulator', label: t('nav.daySimulator') },
   ];
 
   const isToolsActive = toolsLinks.some(link => location.pathname === link.path);
@@ -91,7 +91,7 @@ const Navbar = () => {
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                Bonjour Buddy
+                {t('nav.bonjourBuddy')}
                 <ChevronDown className={`w-3 h-3 transition-transform ${toolsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
@@ -126,21 +126,31 @@ const Navbar = () => {
 
           {/* Right Side - Contact & Language */}
           <div className="hidden md:flex items-center gap-6">
-            {/* Language Toggle */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
-            >
-              <Globe className="w-4 h-4" />
-              <span>{i18n.language === 'en' ? 'EN' : 'FR'}</span>
-            </button>
+            <div className="flex items-center rounded-full border border-gray-700 p-1 bg-[#111]">
+              <button
+                onClick={() => setLanguage('fr')}
+                className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                  i18n.language === 'fr' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                FR
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                  i18n.language === 'en' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                EN
+              </button>
+            </div>
 
             {/* Contact Button */}
             <Link
               to="/universities"
               className="flex items-center gap-2 text-sm text-white hover:gap-3 transition-all"
             >
-              Get Started
+              {t('common.getStarted')}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -174,7 +184,7 @@ const Navbar = () => {
                       : 'text-gray-400'
                   }`}
                 >
-                  Home
+                  {t('nav.home')}
                 </Link>
                 {mainLinks.map((link) => (
                   <Link
@@ -194,7 +204,7 @@ const Navbar = () => {
                 {/* Bonjour Buddy Section in Mobile */}
                 <div className="pt-4 mt-4 border-t border-gray-800">
                   <p className="px-4 py-2 text-xs tracking-widest uppercase text-gray-600">
-                    Bonjour Buddy
+                    {t('nav.bonjourBuddy')}
                   </p>
                   {toolsLinks.map((link) => (
                     <Link
@@ -214,13 +224,24 @@ const Navbar = () => {
 
                 {/* Language Toggle Mobile */}
                 <div className="pt-4 mt-4 border-t border-gray-800 px-4">
-                  <button
-                    onClick={toggleLanguage}
-                    className="flex items-center gap-2 text-sm text-gray-400"
-                  >
-                    <Globe className="w-4 h-4" />
-                    <span>{i18n.language === 'en' ? 'English' : 'Français'}</span>
-                  </button>
+                  <div className="inline-flex items-center rounded-full border border-gray-700 p-1 bg-[#111]">
+                    <button
+                      onClick={() => setLanguage('fr')}
+                      className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                        i18n.language === 'fr' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      FR
+                    </button>
+                    <button
+                      onClick={() => setLanguage('en')}
+                      className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                        i18n.language === 'en' ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                      }`}
+                    >
+                      EN
+                    </button>
+                  </div>
                 </div>
               </div>
             </motion.div>

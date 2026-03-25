@@ -5,7 +5,8 @@ import { Clock, MapPin, Star, RotateCcw, ChevronRight, Trophy, Volume2, ArrowRig
 import simulatorData from '../data/simulator.json';
 
 const DaySimulator = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isFr = i18n.language === 'fr';
   const [started, setStarted] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState(null);
@@ -82,7 +83,7 @@ const DaySimulator = () => {
           >
             <p className="text-xs tracking-widest uppercase text-gray-500 mb-4">Bonjour Buddy</p>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif mb-6">
-              A day in
+              {isFr ? 'Une journee en' : 'A day in'}
               <br />
               <span className="serif-italic text-gray-400">France</span>
             </h1>
@@ -111,17 +112,19 @@ const DaySimulator = () => {
                 {simulatorData.scenario}
               </h2>
               <p className="text-gray-500 mb-8 max-w-lg mx-auto">
-                Navigate through 8 real situations you'll face on your first day as an exchange student. Make choices and learn the right way to handle each one!
+                {isFr
+                  ? 'Traversez 8 situations reelles de votre premiere journee en France. Faites des choix et apprenez les bons reflexes.'
+                  : 'Navigate through 8 real situations you\'ll face on your first day as an exchange student. Make choices and learn the right way to handle each one!'}
               </p>
               <div className="flex flex-wrap justify-center gap-6 mb-10 text-sm text-gray-500">
                 <span className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" /> {simulatorData.steps.length} scenarios
+                  <Clock className="w-4 h-4" /> {simulatorData.steps.length} {isFr ? 'situations' : 'scenarios'}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Star className="w-4 h-4" /> {maxScore} total points
+                  <Star className="w-4 h-4" /> {maxScore} {isFr ? 'points total' : 'total points'}
                 </span>
                 <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" /> 8 AM - 7 PM
+                  <MapPin className="w-4 h-4" /> {isFr ? '8h - 19h' : '8 AM - 7 PM'}
                 </span>
               </div>
               <motion.button
@@ -129,11 +132,11 @@ const DaySimulator = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setStarted(true)}
                 className="bg-white text-black px-10 py-4 rounded-lg font-medium text-lg hover:bg-gray-100 transition-all flex items-center gap-3 mx-auto"
-              >
-                Start Your Day
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
-            </motion.div>
+                >
+                  {isFr ? 'Commencer votre journee' : 'Start Your Day'}
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </motion.div>
           )}
 
           {/* =================== SCENARIO STEP =================== */}
@@ -142,12 +145,12 @@ const DaySimulator = () => {
               {/* Progress Bar */}
               <div className="mb-10">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm text-gray-500">
-                    Step {currentStep + 1} of {simulatorData.steps.length}
-                  </span>
-                  <span className="text-sm font-medium text-purple-400">
-                    Score: {totalScore}/{maxScore}
-                  </span>
+                    <span className="text-sm text-gray-500">
+                      {isFr ? 'Etape' : 'Step'} {currentStep + 1} {isFr ? 'sur' : 'of'} {simulatorData.steps.length}
+                    </span>
+                    <span className="text-sm font-medium text-purple-400">
+                      {isFr ? 'Score' : 'Score'}: {totalScore}/{maxScore}
+                    </span>
                 </div>
                 <div className="w-full bg-gray-800 rounded-full h-1">
                   <motion.div
@@ -271,7 +274,9 @@ const DaySimulator = () => {
                             : 'bg-amber-500/10 border-amber-500/30'
                         }`}>
                           <p className="text-sm font-medium mb-2 text-white">
-                            {step.choices[selectedChoice].isCorrect ? 'Excellent choice!' : 'Not the best choice...'}
+                            {step.choices[selectedChoice].isCorrect
+                              ? (isFr ? 'Excellent choix !' : 'Excellent choice!')
+                              : (isFr ? 'Pas le meilleur choix...' : 'Not the best choice...')}
                           </p>
                           <p className="text-sm text-gray-400">{step.choices[selectedChoice].feedback}</p>
                         </div>
@@ -279,7 +284,7 @@ const DaySimulator = () => {
                         {/* Best Phrase */}
                         <div className="bg-purple-500/10 rounded-lg p-5 border border-purple-500/20">
                           <div className="flex items-center justify-between mb-3">
-                            <span className="text-xs font-medium text-purple-400">Best phrase for this situation:</span>
+                            <span className="text-xs font-medium text-purple-400">{isFr ? 'Meilleure phrase pour cette situation :' : 'Best phrase for this situation:'}</span>
                             <button
                               onClick={() => handleSpeak(step.bestPhrase.french)}
                               className="p-2 rounded-lg hover:bg-purple-500/20 transition-colors"
@@ -300,9 +305,9 @@ const DaySimulator = () => {
                           className="w-full bg-white text-black py-4 rounded-lg font-medium hover:bg-gray-100 transition-all flex items-center justify-center gap-3"
                         >
                           {currentStep < simulatorData.steps.length - 1 ? (
-                            <>Continue to {simulatorData.steps[currentStep + 1].time} <ChevronRight className="w-5 h-5" /></>
+                            <>{isFr ? 'Continuer vers' : 'Continue to'} {simulatorData.steps[currentStep + 1].time} <ChevronRight className="w-5 h-5" /></>
                           ) : (
-                            <>See Your Results <Trophy className="w-5 h-5" /></>
+                            <>{isFr ? 'Voir vos resultats' : 'See Your Results'} <Trophy className="w-5 h-5" /></>
                           )}
                         </motion.button>
                       </motion.div>
@@ -357,13 +362,13 @@ const DaySimulator = () => {
                   className="bg-white text-black px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-all flex items-center gap-2 mx-auto"
                 >
                   <RotateCcw className="w-4 h-4" />
-                  Try Again
+                  {isFr ? 'Reessayer' : 'Try Again'}
                 </motion.button>
               </div>
 
               {/* Review All Steps */}
               <div className="bg-[#111] rounded-xl border border-gray-800 p-8">
-                <h3 className="text-xl font-serif text-white mb-6">Review Your Day</h3>
+                <h3 className="text-xl font-serif text-white mb-6">{isFr ? 'Revoir votre journee' : 'Review Your Day'}</h3>
                 <div className="space-y-5">
                   {simulatorData.steps.map((s, idx) => {
                     const answer = answers[idx];
@@ -386,7 +391,7 @@ const DaySimulator = () => {
                           </div>
                           <p className="text-gray-300 font-medium text-sm">{s.situation}</p>
                           <p className="text-gray-600 text-xs mt-1">
-                            Your choice: {choice?.text}
+                            {isFr ? 'Votre choix' : 'Your choice'}: {choice?.text}
                           </p>
                           <div className="flex items-center gap-2 mt-3">
                             <button
